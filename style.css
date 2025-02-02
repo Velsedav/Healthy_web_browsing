@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&family=Ultra&display=swap');
+
 :root{
   --shadow-color: 14deg 40% 55%;
   --shadow-elevation-low:
@@ -18,26 +19,26 @@
     9px 18px 22.6px -1.7px hsl(var(--shadow-color) / 0.36),
     14.8px 29.5px 37.1px -2.1px hsl(var(--shadow-color) / 0.36),
     23.3px 46.5px 58.5px -2.5px hsl(var(--shadow-color) / 0.36);
-    
-    --primaryColor:rgb(250, 201, 187);
-}
-html {
-  --s: 55px; /* control the size*/
+  --primaryColor:#fac9bb;
+  --s: 55px;
   --c1: #fac9bb;
   --c2: #f1baac;
   --c3: #e3aa9c;
-  
   --_g: 0 120deg,#0000 0;
+}
+
+html {
   background:
-    conic-gradient(             at calc(250%/3) calc(100%/3),var(--c3) var(--_g)),
-    conic-gradient(from -120deg at calc( 50%/3) calc(100%/3),var(--c2) var(--_g)),
-    conic-gradient(from  120deg at calc(100%/3) calc(250%/3),var(--c1) var(--_g)),
-    conic-gradient(from  120deg at calc(200%/3) calc(250%/3),var(--c1) var(--_g)),
-    conic-gradient(from -180deg at calc(100%/3) 50%,var(--c2)  60deg,var(--c1) var(--_g)),
-    conic-gradient(from   60deg at calc(200%/3) 50%,var(--c1)  60deg,var(--c3) var(--_g)),
-    conic-gradient(from  -60deg at 50% calc(100%/3),var(--c1) 120deg,var(--c2) 0 240deg,var(--c3) 0);
+    conic-gradient(at calc(250%/3) calc(100%/3),var(--c3) var(--_g)),
+    conic-gradient(from -120deg at calc(50%/3) calc(100%/3),var(--c2) var(--_g)),
+    conic-gradient(from 120deg at calc(100%/3) calc(250%/3),var(--c1) var(--_g)),
+    conic-gradient(from 120deg at calc(200%/3) calc(250%/3),var(--c1) var(--_g)),
+    conic-gradient(from -180deg at calc(100%/3) 50%,var(--c2) 60deg,var(--c1) var(--_g)),
+    conic-gradient(from 60deg at calc(200%/3) 50%,var(--c1) 60deg,var(--c3) var(--_g)),
+    conic-gradient(from -60deg at 50% calc(100%/3),var(--c1) 120deg,var(--c2) 0 240deg,var(--c3) 0);
   background-size: calc(var(--s)*sqrt(3)) var(--s);
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -46,13 +47,11 @@ html {
 
 body {
   font-family: Arial, sans-serif;
-  /* background-color: RGB(250, 201, 187); */
   padding: 20px;
 }
 
 .container {
-  /* max-width: 1200px; */
-  margin: 0 auto;
+  margin: 0px auto;
 }
 
 .category {
@@ -62,8 +61,7 @@ body {
 .category-title {
   font-family: "Ultra", serif;
   font-weight: 400;
-  font-style: normal;
-  font-size: 1.7rem;
+  font-size: 2rem;
   margin-bottom: 15px;
 }
 
@@ -74,38 +72,37 @@ body {
 .subcategory-title {
   font-family: "Ultra", serif;
   font-weight: 400;
-  font-style: normal;
   font-size: 1.5rem;
   color: #3f3c3c;
   margin-bottom: 10px;
 }
 
-
 .category-level-1 {
   margin-left: 20px;
+  margin-bottom: 2rem;
 }
 
 .category-level-1 .subcategory-title {
-  font-size: 16px;
+  font-size: 1.75rem;
   color: #3a3a3a;
   font-weight: 400;
-
 }
 
 .category-level-2 {
   margin-left: 40px;
+  margin-top: 2.5rem;
 }
 
 .category-level-2 .subcategory-title {
-  font-size: 14px;
+  font-size: 1.5rem;
   color: #515151;
 }
 
 .carousel {
   display: flex;
   overflow-x: auto;
-  gap: 18px;
-  padding-bottom: 3rem;
+  gap: 1.7rem;
+  padding: 1rem;
   scrollbar-width: thin;
   scrollbar-color: #888 #f0f0f0;
 }
@@ -124,59 +121,60 @@ body {
 }
 
 .website-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
   flex: 0 0 250px;
   background: #eff0f1;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 20px;
+  border-radius: 6px;
   box-shadow: 4px 4px 10px rgb(196, 153, 153);
-  min-height: 5rem;
+  min-height: 8rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.website-card:hover {
+  transform: scale(1.03) translateY(9px) rotate(1deg);
+  box-shadow: var(--shadow-elevation-medium);
+  background-color: #b0eadd;
 }
 
 .website-card h3 {
   font-family: "Ultra", serif;
   font-weight: 400;
-  font-style: normal;
   font-size: 1.5rem;
   margin-bottom: 8px;
+  color: #333 !important;
 }
 
 .website-card p {
   font-family: "Slabo 27px", serif;
   font-weight: 400;
-  font-style: normal;
   font-size: 1.688rem;
-  color: black;
+  color: black !important;
   margin-bottom: 10px;
 }
 
-.website-card a {
+.visit-link {
   font-family: "Slabo 27px", serif;
   font-weight: 400;
-  font-style: normal;
-  display: inline-block;
+  display: block;
   color: #007bff;
-  text-decoration: none;
-  font-size: 14px;
+  font-size: 1rem;
+  margin-top: 10px;
 }
-
-.website-card a:hover {
-  text-decoration: underline;
+.favicon {
+  width: 24px;
+  height: 24px;
+  float: left;
+  margin-right: 12px;
+  margin-bottom: 8px;
+  border-radius: 4px;
 }
-
-html {
-  --s: 55px; /* control the size*/
-  --c1: #fac9bb;
-  --c2: #f1baac;
-  --c3: #e3aa9c;
+.category-level-0{
+  /* border: 1px solid #b99c94; */
+  border-radius: 20px;
+  margin-bottom: 70px;
+  padding: 1rem;
   
-  --_g: 0 120deg,#0000 0;
-  background:
-    conic-gradient(             at calc(250%/3) calc(100%/3),var(--c3) var(--_g)),
-    conic-gradient(from -120deg at calc( 50%/3) calc(100%/3),var(--c2) var(--_g)),
-    conic-gradient(from  120deg at calc(100%/3) calc(250%/3),var(--c1) var(--_g)),
-    conic-gradient(from  120deg at calc(200%/3) calc(250%/3),var(--c1) var(--_g)),
-    conic-gradient(from -180deg at calc(100%/3) 50%,var(--c2)  60deg,var(--c1) var(--_g)),
-    conic-gradient(from   60deg at calc(200%/3) 50%,var(--c1)  60deg,var(--c3) var(--_g)),
-    conic-gradient(from  -60deg at 50% calc(100%/3),var(--c1) 120deg,var(--c2) 0 240deg,var(--c3) 0);
-  background-size: calc(var(--s)*sqrt(3)) var(--s);
 }

@@ -1,5 +1,15 @@
 {
-  "categories": [
+  "categories": [          
+      {
+              "name": "MOOC",
+              "websites": [
+                  {"name": "Coursera", "url": "https://www.coursera.org/"},
+                  {"name": "FUN MOOC", "url": "https://www.fun-mooc.fr/"},
+                  {"name": "FutureLearn", "url": "https://www.futurelearn.com/"},
+                  {"name": "edX", "url": "https://www.edx.org/"},
+                  {"name": "OpenClassrooms", "url": "https://openclassrooms.com/fr/"}
+              ]
+      },
       {
           "name": "I.T.",
           "subcategories": [
@@ -24,7 +34,18 @@
                               {"name": "Swiper", "url": "https://swiperjs.com/"}
                           ]
                       },
-
+                      {
+                          "name": "Veille design",
+                          "websites": [
+                            {"name": "Behance", "url":"https://www.behance.net/"},
+                            {"name": "Dribble", "url":"https://dribbble.com/"},
+                            {"name": "Pageflow", "url":"https://pageflows.com/"},
+                            {"name": "Nicely Done", "url":"https://nicelydone.club/"},
+                            {"name": "App Fuel", "url":"https://www.theappfuel.com/"},
+                            {"name": "Component gallery", "url":"https://component.gallery/"},
+                            {"name": "awwwards", "url":"https://www.awwwards.com/"}
+                          ]
+                      },
                       {
                           "name": "CSS Resources",
                           "websites": [
@@ -76,7 +97,8 @@
               {
                   "name": "Cybersecurity",
                   "websites": [
-                      {"name": "Krebs on Security", "url": "https://krebsonsecurity.com/"}
+                      {"name": "Krebs on Security", "url": "https://krebsonsecurity.com/"},
+                      {"name": "Riskintel Media", "url":"https://www.riskintel.fr/actualit%C3%A9s"}
                   ]
               }
           ]
@@ -87,17 +109,7 @@
               {"name": "Canal-U", "url": "https://www.canal-u.tv/"},
               {"name": "Collège de France", "url": "https://www.college-de-france.fr/"},
               {"name": "ENS Savoirs", "url": "http://savoirs.ens.fr/"}
-          ]
-      },
-      {
-          "name": "MOOC",
-          "websites": [
-              {"name": "Coursera", "url": "https://www.coursera.org/"},
-              {"name": "FUN MOOC", "url": "https://www.fun-mooc.fr/"},
-              {"name": "FutureLearn", "url": "https://www.futurelearn.com/"},
-              {"name": "edX", "url": "https://www.edx.org/"},
-              {"name": "OpenClassrooms", "url": "https://openclassrooms.com/fr/"}
-          ]
+            ]
       },
       {
           "name": "Design & Art",

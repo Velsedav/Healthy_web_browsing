@@ -34,12 +34,22 @@ function createCarousel(websites) {
   carousel.className = 'carousel';
 
   websites.forEach(website => {
-      const card = document.createElement('div');
+      const card = document.createElement('a');
       card.className = 'website-card';
+      card.href = website.url;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      
+      // Get domain from URL
+      const domain = new URL(website.url).hostname;
+      
       card.innerHTML = `
+          ${website.icon ? 
+            `<img src="${website.icon}" alt="icon" class="favicon">` : 
+            `<img src="https://www.google.com/s2/favicons?domain=${domain}" alt="icon" class="favicon">`
+          }
           <h3>${website.name}</h3>
           ${website.description ? `<p>${website.description}</p>` : ''}
-          <a href="${website.url}" target="_blank">Visit Website</a>
       `;
       carousel.appendChild(card);
   });
