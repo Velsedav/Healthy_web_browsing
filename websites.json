@@ -1,150 +1,182 @@
 {
-  "categories": [          
-      {
-              "name": "MOOC",
-              "websites": [
-                  {"name": "Coursera", "url": "https://www.coursera.org/"},
-                  {"name": "FUN MOOC", "url": "https://www.fun-mooc.fr/"},
-                  {"name": "FutureLearn", "url": "https://www.futurelearn.com/"},
-                  {"name": "edX", "url": "https://www.edx.org/"},
-                  {"name": "OpenClassrooms", "url": "https://openclassrooms.com/fr/"}
-              ]
-      },
-      {
-          "name": "I.T.",
-          "subcategories": [
-              {
-                  "name": "Web Development",
+    "categories": [          
+        {
+                "name": "MOOC",
+                "websites": [
+                    {"name": "Coursera", "url": "https://www.coursera.org/"},
+                    {"name": "FUN MOOC", "url": "https://www.fun-mooc.fr/"},
+                    {"name": "FutureLearn", "url": "https://www.futurelearn.com/"},
+                    {"name": "edX", "url": "https://www.edx.org/"},
+                    {"name": "OpenClassrooms", "url": "https://openclassrooms.com/fr/"}
+                ]
+        },
+        {
+            "name": "I.T.",
+            "subcategories": [
+                {
+                    "name": "Web Development",
+                    "subcategories": [
+                        {
+                            "name": "Useful Links",
+                            "websites": [
+                                {"name": "MDN Web Docs", "url": "https://developer.mozilla.org/fr/"},
+                                {"name": "Roadmap.sh", "url": "https://roadmap.sh/roadmaps"},
+                                {"name": "W3C Validator", "url": "https://validator.w3.org/"},
+                                {"name": "Contrast Ratio", "url": "https://contrast-ratio.org/"}
+                            ]
+                        },
+                        {
+                            "name": "Components",
+                            "websites": [
+                                {"name": "UIverse", "url": "https://uiverse.io/"},
+                                {"name": "CSS Buttons", "url": "https://www.bestcssbuttongenerator.com/"},
+                                {"name": "AOS Library", "url": "https://michalsnik.github.io/aos/"},
+                                {"name": "Swiper", "url": "https://swiperjs.com/"}
+                            ]
+                        },
+                        {
+                            "name": "Veille design",
+                            "websites": [
+                              {"name": "Behance", "url":"https://www.behance.net/"},
+                              {"name": "Dribble", "url":"https://dribbble.com/"},
+                              {"name": "Pageflow", "url":"https://pageflows.com/"},
+                              {"name": "Nicely Done", "url":"https://nicelydone.club/"},
+                              {"name": "App Fuel", "url":"https://www.theappfuel.com/"},
+                              {"name": "Component gallery", "url":"https://component.gallery/"},
+                              {"name": "awwwards", "url":"https://www.awwwards.com/"}
+                            ]
+                        },
+                        {
+                            "name": "CSS Resources",
+                            "websites": [
+                                {"name": "Malven flex", "url": "https://malven.co/resources"},
+                                {"name": "Malven grid", "url": "https://grid.malven.co/"},
+                                {"name": "PX to REM", "url": "https://nekocalc.com/px-to-rem-converter"},
+                                {"name": "CSS-Tricks", "url": "https://css-tricks.com/"},
+                                {"name": "Units flowchart", "url": "https://youtu.be/Utc_uhvTluk"},
+                                {"name": "Malven Co", "url": "https://malven.co/resources"},
+                                {"name": "Resource Cards", "url": "https://resourcecards.com/"}
+                            ]
+                        },
+                        {
+                            "name": "Icons",
+                            "websites": [
+                                {"name": "Font Awesome", "url": "https://fontawesome.com/icons"},
+                                {"name": "Noun Project", "url": "https://thenounproject.com/"}
+                            ]
+                        },
+                        {
+                          "name": "Colors & Effects",
+                          "websites": [
+                              {"name": "Shader Gradient", "url": "https://www.shadergradient.co/"},
+                              {"name": "CSS Glass", "url": "https://css.glass/"},
+                              {"name": "CSS Gradient.io", "url": "https://cssgradient.io/"},
+                              {"name": "Comeau Shadows", "url": "https://www.joshwcomeau.com/shadow-palette/"}
+                          ]
+                      },
+                        {
+                            "name": "CSS Shapes",
+                            "websites":[
+                              {"name": "Magic Pattern", "url": "https://www.magicpattern.design/tools/css-backgrounds"},
+                              {"name": "CSS Patterns", "url": "https://css-pattern.com/"},
+                              {"name": "Blob Maker", "url": "https://www.blobmaker.app/"},
+                              {"name": "Get Waves", "url": "https://getwaves.io/"},
+                              {"name": "Haikei", "url": "https://haikei.app/"},
+                              {"name":"Frontend MASTER", "url":"https://frontendmasters.com/blog/pure-css-halftone-effect-in-3-declarations/"}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Network",
+                    "websites": [
+                        {"name": "Network Chuck", "url": "https://networkchuck.com/"},
+                        {"name": "Cisco", "url": "https://cisco.com/"}
+                    ]
+                },
+                {
+                    "name": "Cybersecurity",
+                    "websites": [
+                        {"name": "Krebs on Security", "url": "https://krebsonsecurity.com/"},
+                        {"name": "Riskintel Media", "url":"https://www.riskintel.fr/actualit%C3%A9s"}
+                    ]
+                },
+                {
+                  "name": "A.I.",
                   "subcategories": [
-                      {
-                          "name": "Useful Links",
-                          "websites": [
-                              {"name": "MDN Web Docs", "url": "https://developer.mozilla.org/fr/"},
-                              {"name": "Roadmap.sh", "url": "https://roadmap.sh/roadmaps"},
-                              {"name": "W3C Validator", "url": "https://validator.w3.org/"},
-                              {"name": "Contrast Ratio", "url": "https://contrast-ratio.org/"}
-                          ]
-                      },
-                      {
-                          "name": "Components",
-                          "websites": [
-                              {"name": "UIverse", "url": "https://uiverse.io/"},
-                              {"name": "CSS Buttons", "url": "https://www.bestcssbuttongenerator.com/"},
-                              {"name": "AOS Library", "url": "https://michalsnik.github.io/aos/"},
-                              {"name": "Swiper", "url": "https://swiperjs.com/"}
-                          ]
-                      },
-                      {
-                          "name": "Veille design",
-                          "websites": [
-                            {"name": "Behance", "url":"https://www.behance.net/"},
-                            {"name": "Dribble", "url":"https://dribbble.com/"},
-                            {"name": "Pageflow", "url":"https://pageflows.com/"},
-                            {"name": "Nicely Done", "url":"https://nicelydone.club/"},
-                            {"name": "App Fuel", "url":"https://www.theappfuel.com/"},
-                            {"name": "Component gallery", "url":"https://component.gallery/"},
-                            {"name": "awwwards", "url":"https://www.awwwards.com/"}
-                          ]
-                      },
-                      {
-                          "name": "CSS Resources",
-                          "websites": [
-                              {"name": "Malven flex", "url": "https://malven.co/resources"},
-                              {"name": "Malven grid", "url": "https://grid.malven.co/"},
-                              {"name": "PX to REM", "url": "https://nekocalc.com/px-to-rem-converter"},
-                              {"name": "CSS-Tricks", "url": "https://css-tricks.com/"},
-                              {"name": "Units flowchart", "url": "https://youtu.be/Utc_uhvTluk"},
-                              {"name": "Malven Co", "url": "https://malven.co/resources"},
-                              {"name": "Resource Cards", "url": "https://resourcecards.com/"}
-                          ]
-                      },
-                      {
-                          "name": "Icons",
-                          "websites": [
-                              {"name": "Font Awesome", "url": "https://fontawesome.com/icons"},
-                              {"name": "Noun Project", "url": "https://thenounproject.com/"}
-                          ]
-                      },
-                      {
-                        "name": "Colors & Effects",
-                        "websites": [
-                            {"name": "Shader Gradient", "url": "https://www.shadergradient.co/"},
-                            {"name": "CSS Glass", "url": "https://css.glass/"},
-                            {"name": "CSS Gradient.io", "url": "https://cssgradient.io/"},
-                            {"name": "Comeau Shadows", "url": "https://www.joshwcomeau.com/shadow-palette/"}
-                        ]
+                    {
+                      "name": "LLM (Large Language Models)",
+                      "websites": [
+                        {"name": "Gemini", "url": "https://gemini.google.com/gems/view"},
+                        {"name": "DeepSeek", "url": "https://chat.deepseek.com/a/chat/s/eace06e7-7e5f-40c4-926f-8b476ef9160e"},
+                        {"name": "Mistral AI", "url": "https://chat.mistral.ai/chat"},
+                        {"name": "ChatGPT", "url": "https://chatgpt.com/"},
+                        {"name": "Claude", "url": "https://claude.ai/new"},
+                        {"name": "Hugging Face", "url": "https://huggingface.co/"},
+                        {"name": "Perplexity AI", "url": "https://www.perplexity.ai/"},
+                        {"name": "Grok", "url": "https://grok.x.ai/"},
+                        {"name": "Cohere", "url": "https://cohere.com/"}
+                      ]
                     },
-                      {
-                          "name": "CSS Shapes",
-                          "websites":[
-                            {"name": "Magic Pattern", "url": "https://www.magicpattern.design/tools/css-backgrounds"},
-                            {"name": "CSS Patterns", "url": "https://css-pattern.com/"},
-                            {"name": "Blob Maker", "url": "https://www.blobmaker.app/"},
-                            {"name": "Get Waves", "url": "https://getwaves.io/"},
-                            {"name": "Haikei", "url": "https://haikei.app/"},
-                            {"name":"Frontend MASTER", "url":"https://frontendmasters.com/blog/pure-css-halftone-effect-in-3-declarations/"}
-                          ]
-                      }
+                    {
+                      "name": "AI Image Generation",
+                      "websites": [
+                        {"name": "Midjourney", "url": "https://www.midjourney.com/"},
+                        {"name": "DALL-E", "url": "https://labs.openai.com/"},
+                        {"name": "Stable Diffusion", "url": "https://stability.ai/"},
+                        {"name": "Leonardo AI", "url": "https://leonardo.ai/"},
+                        {"name": "NightCafe", "url": "https://nightcafe.studio/"},
+                        {"name": "Craiyon", "url": "https://www.craiyon.com/"},
+                        {"name": "Artbreeder", "url": "https://www.artbreeder.com/"},
+                        {"name": "Adobe Firefly", "url": "https://www.adobe.com/sensei/generative-ai/firefly.html"}
+                      ]
+                    }
                   ]
-              },
-              {
-                  "name": "Network",
-                  "websites": [
-                      {"name": "Network Chuck", "url": "https://networkchuck.com/"},
-                      {"name": "Cisco", "url": "https://cisco.com/"}
-                  ]
-              },
-              {
-                  "name": "Cybersecurity",
-                  "websites": [
-                      {"name": "Krebs on Security", "url": "https://krebsonsecurity.com/"},
-                      {"name": "Riskintel Media", "url":"https://www.riskintel.fr/actualit%C3%A9s"}
-                  ]
-              }
-          ]
-      },
-      {
-          "name": "Education",
-          "websites": [
-              {"name": "Canal-U", "url": "https://www.canal-u.tv/"},
-              {"name": "Collège de France", "url": "https://www.college-de-france.fr/"},
-              {"name": "ENS Savoirs", "url": "http://savoirs.ens.fr/"}
+                }
+              ]
+        },
+        {
+            "name": "Education",
+            "websites": [
+                {"name": "Canal-U", "url": "https://www.canal-u.tv/"},
+                {"name": "Collège de France", "url": "https://www.college-de-france.fr/"},
+                {"name": "ENS Savoirs", "url": "http://savoirs.ens.fr/"}
+              ]
+        },
+        {
+            "name": "Design & Art",
+            "subcategories": [
+                {
+                    "name": "Art & Culture",
+                    "websites": [
+                        {"name": "Connaissance des Arts", "url": "https://www.connaissancedesarts.com/"},
+                        {"name": "Spoon & Tamago", "url": "https://www.spoon-tamago.com/"}
+                    ]
+                }
             ]
-      },
-      {
-          "name": "Design & Art",
-          "subcategories": [
-              {
-                  "name": "Art & Culture",
-                  "websites": [
-                      {"name": "Connaissance des Arts", "url": "https://www.connaissancedesarts.com/"},
-                      {"name": "Spoon & Tamago", "url": "https://www.spoon-tamago.com/"}
-                  ]
-              }
-          ]
-      },
-      {
-          "name": "General",
-          "websites": [
-              {"name": "TED Talks", "url": "https://www.ted.com/"},
-              {"name": "CIA World Factbook", "url": "https://www.cia.gov/the-world-factbook/"},
-              {"name": "BrainFacts", "url": "https://www.brainfacts.org/"},
-              {"name": "Knowable Magazine", "url": "https://knowablemagazine.org/"}
-          ]
-      },
-      {
-          "name": "Finance",
-          "websites": [
-              {"name": "La Finance Pour Tous", "url": "https://www.lafinancepourtous.com/"},
-              {"name": "CB Expert", "url": "https://www.cb-expert.fr/"}
-          ]
-      },
-      {
-          "name": "Media",
-          "websites": [
-              {"name": "ICIJ", "url": "https://www.icij.org/"},
-              {"name": "Eco Nord Isère", "url": "https://groupe-ecomedia.com/eco-nord-isere/"}
-          ]
-      }
-  ]
-}
+        },
+        {
+            "name": "General",
+            "websites": [
+                {"name": "TED Talks", "url": "https://www.ted.com/"},
+                {"name": "CIA World Factbook", "url": "https://www.cia.gov/the-world-factbook/"},
+                {"name": "BrainFacts", "url": "https://www.brainfacts.org/"},
+                {"name": "Knowable Magazine", "url": "https://knowablemagazine.org/"}
+            ]
+        },
+        {
+            "name": "Finance",
+            "websites": [
+                {"name": "La Finance Pour Tous", "url": "https://www.lafinancepourtous.com/"},
+                {"name": "CB Expert", "url": "https://www.cb-expert.fr/"}
+            ]
+        },
+        {
+            "name": "Media",
+            "websites": [
+                {"name": "ICIJ", "url": "https://www.icij.org/"},
+                {"name": "Eco Nord Isère", "url": "https://groupe-ecomedia.com/eco-nord-isere/"}
+            ]
+        }
+    ]
+  }
