@@ -82,7 +82,7 @@
                               {"name": "Blob Maker", "url": "https://www.blobmaker.app/"},
                               {"name": "Get Waves", "url": "https://getwaves.io/"},
                               {"name": "Haikei", "url": "https://haikei.app/"},
-                              {"name":"Frontend MASTER", "url":"https://frontendmasters.com/blog/pure-css-halftone-effect-in-3-declarations/"}
+                              {"name": "Frontend MASTER", "url":"https://frontendmasters.com/blog/pure-css-halftone-effect-in-3-declarations/"}
                             ]
                         }
                     ]
@@ -91,14 +91,18 @@
                     "name": "Network",
                     "websites": [
                         {"name": "Network Chuck", "url": "https://networkchuck.com/"},
-                        {"name": "Cisco", "url": "https://cisco.com/"}
+                        {"name": "Cisco", "url": "https://cisco.com/"},
+                        {"name": "Prof MESSER", "url":"https://www.professormesser.com/free-a-plus-training/220-1101/220-1101-video/220-1101-training-course/"},
+                        {"name": "Systèmes & Réseaux","url" :"https://openclassrooms.com/fr/courses?categories=Syst%C3%A8mes%20%26%20R%C3%A9seaux"}
                     ]
                 },
                 {
                     "name": "Cybersecurity",
                     "websites": [
                         {"name": "Krebs on Security", "url": "https://krebsonsecurity.com/"},
-                        {"name": "Riskintel Media", "url":"https://www.riskintel.fr/actualit%C3%A9s"}
+                        {"name": "Riskintel Media", "url":"https://www.riskintel.fr/actualit%C3%A9s"},
+                        {"name": "David BOMBAL course", "url":"https://courses.davidbombal.com/courses/enrolled/1216661"},
+                        {"name": "OC Cybersécurité", "url" :"https://openclassrooms.com/fr/courses?categories=Cybers%C3%A9curit%C3%A9"}
                     ]
                 },
                 {
