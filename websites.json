@@ -115,6 +115,7 @@
                       "name": "LLM (Large Language Models)",
                       "websites": [
                         {"name" : "Artficial Analysis", "url" :"https://artificialanalysis.ai/leaderboards/models"},
+                        {"name" : "NoteBook LM", "url" :"https://notebooklm.google.com/?pli=1"},
                         {"name": "Gemini", "url": "https://gemini.google.com/gems/view"},
                         {"name": "DeepSeek", "url": "https://chat.deepseek.com/a/chat/s/eace06e7-7e5f-40c4-926f-8b476ef9160e"},
                         {"name": "Mistral AI", "url": "https://chat.mistral.ai/chat"},
