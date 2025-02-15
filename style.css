@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&family=Ultra&display=swap');
 
 :root{
+  --titles:#dcdcdc;
   --shadow-color: 14deg 40% 55%;
   --shadow-elevation-low:
     0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.32),
@@ -20,23 +21,21 @@
     14.8px 29.5px 37.1px -2.1px hsl(var(--shadow-color) / 0.36),
     23.3px 46.5px 58.5px -2.5px hsl(var(--shadow-color) / 0.36);
   --primaryColor:#fac9bb;
-  --s: 55px;
-  --c1: #fac9bb;
-  --c2: #f1baac;
-  --c3: #e3aa9c;
-  --_g: 0 120deg,#0000 0;
 }
 
 html {
+  --s: 28px; /* control the size*/
+  --c1: #860000;
+  --c2: #ff5757;
+  
+  --_g: 
+     var(--c2) 6%  14%,var(--c1) 16% 24%,var(--c2) 26% 34%,var(--c1) 36% 44%,
+     var(--c2) 46% 54%,var(--c1) 56% 64%,var(--c2) 66% 74%,var(--c1) 76% 84%,var(--c2) 86% 94%;
   background:
-    conic-gradient(at calc(250%/3) calc(100%/3),var(--c3) var(--_g)),
-    conic-gradient(from -120deg at calc(50%/3) calc(100%/3),var(--c2) var(--_g)),
-    conic-gradient(from 120deg at calc(100%/3) calc(250%/3),var(--c1) var(--_g)),
-    conic-gradient(from 120deg at calc(200%/3) calc(250%/3),var(--c1) var(--_g)),
-    conic-gradient(from -180deg at calc(100%/3) 50%,var(--c2) 60deg,var(--c1) var(--_g)),
-    conic-gradient(from 60deg at calc(200%/3) 50%,var(--c1) 60deg,var(--c3) var(--_g)),
-    conic-gradient(from -60deg at 50% calc(100%/3),var(--c1) 120deg,var(--c2) 0 240deg,var(--c3) 0);
-  background-size: calc(var(--s)*sqrt(3)) var(--s);
+    radial-gradient(100% 100% at 100% 0,var(--c1) 4%,var(--_g),#0008 96%,#0000),
+    radial-gradient(100% 100% at 0 100%,#0000, #0008 4%,var(--_g),var(--c1) 96%)
+    var(--c1);
+  background-size: var(--s) var(--s);
 }
 
 * {
@@ -47,7 +46,6 @@ html {
 
 body {
   font-family: Arial, sans-serif;
-  padding: 20px;
 }
 
 
@@ -69,6 +67,9 @@ body {
   font-weight: 400;
   font-size: 2rem;
   margin-bottom: 10px;
+  color: var(--titles);
+  -webkit-text-stroke: gray;
+  -webkit-text-stroke-width: 0.8px;
 }
 
 .subcategory {
@@ -79,7 +80,9 @@ body {
   font-family: "Ultra", serif;
   font-weight: 400;
   font-size: 1.5rem;
-  color: #3f3c3c;
+  color: var(--titles);
+  -webkit-text-stroke: gray;
+  -webkit-text-stroke-width: 0.8px;
   margin-bottom: 10px;
 }
 
@@ -90,7 +93,9 @@ body {
 
 .category-level-1 .subcategory-title {
   font-size: 1.75rem;
-  color: #3a3a3a;
+  color: var(--titles);
+  -webkit-text-stroke: rgb(126, 120, 120);
+  -webkit-text-stroke-width: 0.8px;
   font-weight: 400;
 }
 
@@ -101,20 +106,22 @@ body {
 
 .category-level-2 .subcategory-title {
   font-size: 1.5rem;
-  color: #515151;
+  color: var(--titles);
+  -webkit-text-stroke: gray;
+  -webkit-text-stroke-width: 0.8px;
 }
 
 .carousel {
   display: flex;
   overflow-x: auto;
   gap: 1rem;
-  padding: 2rem;
+  padding: 2.5rem;
   scrollbar-width: 1rem;
-  scrollbar-color: #888 #f0f0f0;
+  scrollbar-color: #534949 #ab8080;
 }
 
 .carousel::-webkit-scrollbar {
-  height: 16px;
+  height: 24px;
 }
 
 .carousel::-webkit-scrollbar-track {
@@ -122,7 +129,7 @@ body {
 }
 
 .carousel::-webkit-scrollbar-thumb {
-  background-color: #888;
+  background-color: #ff0000;
   border-radius: 50%;
 }
 
@@ -131,10 +138,10 @@ body {
   text-decoration: none;
   color: inherit;
   flex: 0 0 250px;
-  background: #eff0f1;
+  background: #e0d9d7;
   padding: 20px;
   border-radius: 6px;
-  box-shadow: 4px 4px 10px rgb(196, 153, 153);
+  box-shadow: 2px 2px 6px rgb(192, 151, 151);
   min-height: 5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -176,12 +183,11 @@ body {
   height: 24px;
   margin-right: 12px;
   margin-bottom: 8px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 .category-level-0{
-  /* border: 1px solid #b99c94; */
-  border-radius: 20px;
-  margin-bottom: 10px;
-  padding: 1rem;
-  
+  /* border: 1px solid #cab6b1; */
+  /* border-radius: 20px; */
+  /* margin-bottom: 10px; */
+  padding: 0.8rem;
 }
