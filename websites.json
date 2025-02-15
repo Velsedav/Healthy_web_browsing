@@ -184,9 +184,9 @@
         {
             "name": "Media",
             "websites": [
+                {"name": "The conversation", "url": "https://theconversation.com/fr"},
                 {"name": "ICIJ", "url": "https://www.icij.org/"},
-                {"name": "Eco Nord Isère", "url": "https://groupe-ecomedia.com/eco-nord-isere/"},
-                {"name": "The conversation", "url": "https://theconversation.com/fr"}
+                {"name": "Eco Nord Isère", "url": "https://groupe-ecomedia.com/eco-nord-isere/"}
             ]
         }
     ]
