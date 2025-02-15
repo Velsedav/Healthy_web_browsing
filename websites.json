@@ -21,6 +21,7 @@
                             "websites": [
                                 {"name": "MDN Web Docs", "url": "https://developer.mozilla.org/fr/"},
                                 {"name": "Roadmap.sh", "url": "https://roadmap.sh/roadmaps"},
+                                {"name": "JS CheatSheet", "url": "https://github.com/mbeaudru/modern-js-cheatsheet?tab=readme-ov-file#notions"},
                                 {"name": "W3C Validator", "url": "https://validator.w3.org/"},
                                 {"name": "Contrast Ratio", "url": "https://contrast-ratio.org/"}
                             ]
@@ -112,7 +113,7 @@
                   "name": "A.I.",
                   "subcategories": [
                     {
-                      "name": "LLM (Large Language Models)",
+                      "name": "L.L.M.",
                       "websites": [
                         {"name" : "Artficial Analysis", "url" :"https://artificialanalysis.ai/leaderboards/models"},
                         {"name" : "NoteBook LM", "url" :"https://notebooklm.google.com/?pli=1"},
@@ -184,7 +185,8 @@
             "name": "Media",
             "websites": [
                 {"name": "ICIJ", "url": "https://www.icij.org/"},
-                {"name": "Eco Nord Isère", "url": "https://groupe-ecomedia.com/eco-nord-isere/"}
+                {"name": "Eco Nord Isère", "url": "https://groupe-ecomedia.com/eco-nord-isere/"},
+                {"name": "The conversation", "url": "https://theconversation.com/fr"}
             ]
         }
     ]
