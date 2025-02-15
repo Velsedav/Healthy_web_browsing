@@ -23,6 +23,7 @@
     14.8px 29.5px 37.1px -2.1px hsl(var(--shadow-color) / 0.36),
     23.3px 46.5px 58.5px -2.5px hsl(var(--shadow-color) / 0.36);
   --primaryColor: #fac9bb;
+  --Turquoise :#3fcdac;
 }
 
 html {
@@ -149,7 +150,7 @@ body {
 .website-card:hover {
   transform: scale(1.2) translateY(6.3px) rotate(1deg); /* Adjusted */
   box-shadow: var(--shadow-elevation-medium);
-  background-color: #b0eadd;
+  background-color: var(--Turquoise);
   transition: 0.1s ease-in-out;
   z-index: 2;
 }
@@ -189,15 +190,23 @@ body {
 }
 @media only screen and (min-width: 300px) and (orientation: portrait) {
   .carousel {
-    padding: 0.28rem; /* Reduced from 0.4rem */
+    padding: 6px;
   }
   .category-level-1 {
-    margin-left: 1.4px; /* Reduced from 2px */
+    margin-left: 6px;
   }
   .category-level-2 {
-    margin-left: 0.7rem; /* Reduced from 1rem */
+    margin-left: 6px;
   }
   .website-card {
-    min-height: 2.1rem; /* Reduced from 3rem */
+    min-width: fit-content;
+    padding: 6px;
   }
+  .website-card:hover {
+  transform: scale(1) translateY(0px) rotate(0deg); /* Adjusted */
+  box-shadow: var(--shadow-elevation-medium);
+  background-color: var(--Turquoise);
+  transition: 0.5s ease-in-out;
+  z-index: 2;
+}
 }
