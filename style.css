@@ -188,7 +188,7 @@ body {
 .category-level-0 {
   padding: 0.56rem; /* Reduced from 0.8rem */
 }
-@media only screen and (min-width: 300px) and (orientation: portrait) {
+@media (width <= 1180px) {
   .carousel {
     padding: 6px;
   }
