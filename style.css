@@ -191,14 +191,20 @@ body {
   /* margin-bottom: 10px; */
   padding: 0.8rem;
 }
-@media only screen and (min-width: 383px){
+@media only screen and (-webkit-min-device-pixel-ratio: 3.75), 
+       only screen and (-min--moz-device-pixel-ratio: 3.75), 
+       only screen and (-o-min-device-pixel-ratio: 3.75/1), 
+       only screen and (min-device-pixel-ratio: 3.75){
   .carousel {
-    pad: 0.5rem;
+    padding: 0.4rem;
   }
   .category-level-1{
     margin-left: 2px;
   }
   .category-level-2{
     margin-left: 1rem;
+  }
+  .website-card{
+    min-height: 3rem;
   }
 }
