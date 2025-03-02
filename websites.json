@@ -106,7 +106,8 @@
                         {"name": "OC Cybersécurité", "url" :"https://openclassrooms.com/fr/courses?categories=Cybers%C3%A9curit%C3%A9"},
                         {"name": "Root me", "url":"https://www.root-me.org/"},
                         {"name": "Hack the box", "url":"https://www.hackthebox.com/"},
-                        {"name": "Try hack me", "url":"https://tryhackme.com/"}
+                        {"name": "Try hack me", "url":"https://tryhackme.com/"},
+                        {"name": "Am I unique ?", "url":"https://amiunique.org/"}
                     ]
                 },
                 {
