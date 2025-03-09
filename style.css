@@ -1,21 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&family=Ultra&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Slabo+27px&family=Ultra&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
 
 :root {
   --titles: #dcdcdc;
   --shadow-color: 14deg 40% 55%;
-  --shadow-elevation-low:
-    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.32),
+  --shadow-elevation-low: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.32),
     0.4px 0.8px 1px -1.2px hsl(var(--shadow-color) / 0.32),
     1px 1.9px 2.4px -2.5px hsl(var(--shadow-color) / 0.32);
-  --shadow-elevation-medium:
-    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.33),
+  --shadow-elevation-medium: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.33),
     0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.33),
     2px 4px 5px -1.7px hsl(var(--shadow-color) / 0.33),
     4.8px 9.7px 12.2px -2.5px hsl(var(--shadow-color) / 0.33);
-  --shadow-elevation-high:
-    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
+  --shadow-elevation-high: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
     1.6px 3.1px 3.9px -0.4px hsl(var(--shadow-color) / 0.36),
     3px 6px 7.5px -0.8px hsl(var(--shadow-color) / 0.36),
     5.3px 10.6px 13.3px -1.2px hsl(var(--shadow-color) / 0.36),
@@ -23,21 +19,32 @@
     14.8px 29.5px 37.1px -2.1px hsl(var(--shadow-color) / 0.36),
     23.3px 46.5px 58.5px -2.5px hsl(var(--shadow-color) / 0.36);
   --primaryColor: #fac9bb;
-  --Turquoise :#3fcdac;
+  --Turquoise: #27cda6;
 }
 
 html {
   --s: 28px; /* control the size*/
   --c1: #860000;
   --c2: #ff5757;
-  
-  --_g: 
-     var(--c2) 6%  14%,var(--c1) 16% 24%,var(--c2) 26% 34%,var(--c1) 36% 44%,
-     var(--c2) 46% 54%,var(--c1) 56% 64%,var(--c2) 66% 74%,var(--c1) 76% 84%,var(--c2) 86% 94%;
-  background:
-    radial-gradient(100% 100% at 100% 0,var(--c1) 4%,var(--_g),#0008 96%,#0000),
-    radial-gradient(100% 100% at 0 100%,#0000, #0008 4%,var(--_g),var(--c1) 96%)
-    var(--c1);
+
+  --_g: var(--c2) 6% 14%, var(--c1) 16% 24%, var(--c2) 26% 34%,
+    var(--c1) 36% 44%, var(--c2) 46% 54%, var(--c1) 56% 64%, var(--c2) 66% 74%,
+    var(--c1) 76% 84%, var(--c2) 86% 94%;
+  background: radial-gradient(
+      100% 100% at 100% 0,
+      var(--c1) 4%,
+      var(--_g),
+      #0008 96%,
+      #0000
+    ),
+    radial-gradient(
+        100% 100% at 0 100%,
+        #0000,
+        #0008 4%,
+        var(--_g),
+        var(--c1) 96%
+      )
+      var(--c1);
   background-size: var(--s) var(--s);
 }
 
@@ -115,7 +122,7 @@ body {
 .carousel {
   display: flex;
   overflow-x: auto;
-  gap: 0.7rem; /* Reduced from 1rem */
+  gap: 1rem; /* Reduced from 1rem */
   padding: 1.35rem; /* Reduced from 2.5rem */
   scrollbar-width: 1rem;
   scrollbar-color: #534949 #ab8080;
@@ -138,13 +145,13 @@ body {
   display: block;
   text-decoration: none;
   color: inherit;
-  flex: 0 0 175px; /* Reduced from 250px */
+  flex: 0 0 200px; /* Reduced from 250px */
   background: #e0d9d7;
-  padding: 14px; /* Reduced from 20px */
+  padding: 10px; /* Reduced from 20px */
   border-radius: 6px;
   box-shadow: 2px 2px 6px rgb(192, 151, 151);
-  min-height: 3.5rem; /* Reduced from 5rem */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 100px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .website-card:hover {
@@ -203,10 +210,10 @@ body {
     padding: 6px;
   }
   .website-card:hover {
-  transform: scale(1) translateY(0px) rotate(0deg); /* Adjusted */
-  box-shadow: var(--shadow-elevation-medium);
-  background-color: var(--Turquoise);
-  transition: 0.5s ease-in-out;
-  z-index: 2;
-}
+    transform: scale(1) translateY(0px) rotate(0deg); /* Adjusted */
+    box-shadow: var(--shadow-elevation-medium);
+    background-color: var(--Turquoise);
+    transition: 0.5s ease-in-out;
+    z-index: 2;
+  }
 }
