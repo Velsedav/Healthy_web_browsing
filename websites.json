@@ -43,6 +43,8 @@
               "name": "Krebs on Security",
               "url": "https://krebsonsecurity.com/"
             },
+            { "name": "OSINTopia", "url": "https://ozint.eu/inscription.cgi" },
+            { "name": "Projet FOX", "url": "https://projetfox.com/" },
             {
               "name": "Riskintel Media",
               "url": "https://www.riskintel.fr/actualit%C3%A9s"
@@ -52,13 +54,22 @@
               "url": "https://courses.davidbombal.com/courses/enrolled/1216661"
             },
             {
-              "name": "OC Cybersécurité",
-              "url": "https://openclassrooms.com/fr/courses?categories=Cybers%C3%A9curit%C3%A9"
+              "name": "NoHackMe",
+              "url": "https://blog.nohackme.com/"
             },
+            { "name": "Am I unique ?", "url": "https://amiunique.org/" }
+          ]
+        },
+        {
+          "name": "Cybersecurity practice",
+          "websites": [
             { "name": "Root me", "url": "https://www.root-me.org/" },
             { "name": "Hack the box", "url": "https://www.hackthebox.com/" },
             { "name": "Try hack me", "url": "https://tryhackme.com/" },
-            { "name": "Am I unique ?", "url": "https://amiunique.org/" }
+            {
+              "name": "OC Cybersécurité",
+              "url": "https://openclassrooms.com/fr/courses?categories=Cybers%C3%A9curit%C3%A9"
+            }
           ]
         },
         {

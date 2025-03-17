@@ -186,8 +186,8 @@ body {
   font-style: normal;
 }
 .favicon {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   margin-right: 8.4px; /* Reduced from 12px */
   margin-bottom: 5.6px; /* Reduced from 8px */
   border-radius: 4px;
