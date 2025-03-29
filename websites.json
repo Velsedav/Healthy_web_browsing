@@ -171,7 +171,8 @@
                 {
                   "name": "Comeau Shadows",
                   "url": "https://www.joshwcomeau.com/shadow-palette/"
-                }
+                },
+                { "name": "LottieLab", "url": "https://www.lottielab.com/" }
               ]
             },
             {
@@ -231,6 +232,10 @@
               "name": "AI Image Generation",
               "websites": [
                 { "name": "Midjourney", "url": "https://www.midjourney.com/" },
+                {
+                  "name": "Recraft AI",
+                  "url": "https://www.recraft.ai/project/6c33fe28-89e1-4379-bf43-ac6253de92d9"
+                },
                 { "name": "DALL-E", "url": "https://labs.openai.com/" },
                 { "name": "Stable Diffusion", "url": "https://stability.ai/" },
                 { "name": "Leonardo AI", "url": "https://leonardo.ai/" },
