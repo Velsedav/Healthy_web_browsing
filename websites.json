@@ -253,6 +253,65 @@
       ]
     },
     {
+      "name": "Emploi",
+      "subcategories": [
+        {
+          "name": "ESN",
+          "websites": [
+            { "name": "ESN Company 1", "url": "https://exemple-esn-1.com/" },
+            { "name": "ESN Company 2", "url": "https://exemple-esn-2.com/" },
+            { "name": "ESN Company 3", "url": "https://exemple-esn-3.com/" },
+            { "name": "ESN Jobs Board", "url": "https://exemple-esn-jobs.com/" }
+          ]
+        },
+        {
+          "name": "Intérim",
+          "websites": [
+            { "name": "Agence Intérim 1", "url": "https://exemple-interim-1.com/" },
+            { "name": "Agence Intérim 2", "url": "https://exemple-interim-2.com/" },
+            { "name": "Plateforme IT Intérim", "url": "https://exemple-it-interim.com/" },
+            { "name": "Mission IT", "url": "https://exemple-mission-it.com/" }
+          ]
+        },
+        {
+          "name": "Publique",
+          "websites": [
+            { "name": "Place de l'emploi public", "url": "https://exemple-emploi-public.com/" },
+            { "name": "Concours IT publics", "url": "https://exemple-concours-it.com/" },
+            { "name": "Fonction publique territoriale", "url": "https://exemple-fpt.com/" },
+            { "name": "Ministère numérique", "url": "https://exemple-ministere-num.com/" }
+          ]
+        },
+        {
+          "name": "Privé",
+          "websites": [
+            { "name": "Entreprise Tech 1", "url": "https://exemple-tech-1.com/" },
+            { "name": "Startup IT", "url": "https://exemple-startup-it.com/" },
+            { "name": "Multinationale Tech", "url": "https://exemple-multinational.com/" },
+            { "name": "PME Innovante", "url": "https://exemple-pme-innovante.com/" }
+          ]
+        },
+                {
+          "name": "Jobboards",
+          "websites": [
+            { "name": "Indeed", "url": "https://fr.indeed.com/" },
+            { "name": "France Travail", "url": "https://www.francetravail.fr/accueil/" },
+            { "name": "Hellowork", "url": "https://www.hellowork.com/fr-fr/" },
+            { "name": "Welcome to the jungle", "url": "https://www.welcometothejungle.com/fr" },
+            { "name": "Leboncoin", "url":"https://www.leboncoin.fr/c/offres_d_emploi"},
+            { "name": "Talent", "url":"https://fr.talent.com/jobs?l=Marseille&id=bf64300f79da"},
+            { "name": "Cadremploi", "url": "https://www.cadremploi.fr/"},
+            { "name": "MeteoJob", "url": "https://www.meteojob.com/"},
+            {"name": "Jobijoba", "url": "https://www.jobijoba.com/fr/"},
+            {"name": "Option carrière", "url" :"https://www.optioncarriere.com/"},
+            {"name": "APEC", "url":"https://www.apec.fr/"},
+            {"name": "Monster", "url": "https://www.monster.fr/"}
+
+          ]
+        }
+      ]
+    },
+    {
       "name": "Education",
       "websites": [
         { "name": "Canal-U", "url": "https://www.canal-u.tv/" },
