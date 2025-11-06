@@ -365,10 +365,11 @@
         { "name": "The conversation", "url": "https://theconversation.com/fr" },
         { "name": "Flux RSS", "url": "https://www.inoreader.com/all_articles" },
         { "name": "ICIJ", "url": "https://www.icij.org/" },
-        {
-          "name": "Eco Nord Isère",
-          "url": "https://groupe-ecomedia.com/eco-nord-isere/"
-        }
+        { "name": "Journalism trust initiative", "url": "https://journalismtrustinitiative.org/"},
+        {"name": "Eco Nord Isère","url": "https://groupe-ecomedia.com/eco-nord-isere/"},
+        {"name": "Bellingcat", "url": "https://fr.bellingcat.com/"},
+        {"name": "Reporters sans frontières", "url": "https://rsf.org/fr"},
+        {"name": "Harvard Business Review", "url": "https://hbr.org/"}
       ]
     }
   ]
