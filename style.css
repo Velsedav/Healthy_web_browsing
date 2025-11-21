@@ -603,3 +603,122 @@ body {
   }
 
 }
+
+/* ============================================================
+   MOBILE MODE — Spotify Style (≤ 480px)
+   Compact, fast horizontal scroll for S23 Ultra
+============================================================ */
+@media (max-width: 480px) {
+
+  /* Container full width */
+  .container {
+    width: 100%;
+    padding: 0 0.5rem;
+    margin-top: 3.2rem;
+  }
+
+  /* ===========================================
+     TITLES
+  =========================================== */
+  .category-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .subcategory-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Remove deep indenting for readability */
+  .category-level-1,
+  .category-level-2 {
+    margin-left: 0;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(255,255,255,0.05);
+  }
+
+  /* ===========================================
+     SPOTIFY-LIKE CARROUSEL
+  =========================================== */
+  .bento-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.8rem !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.4rem;
+    margin-top: 0.4rem;
+
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .bento-grid::-webkit-scrollbar { display: none; }
+
+  /* Small compact cards */
+  .website-card {
+    min-width: 140px !important;  /* SPOTIFY SIZE */
+    height: 135px !important;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    transform: scale(0.97); /* subtle */
+  }
+
+  /* Remove spans, they break the line layout */
+  .bento-wide,
+  .bento-tall {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+
+  /* Card interior */
+  .card-inner {
+    padding: 8px;
+  }
+
+  .card-inner h3 {
+    font-size: 0.82rem;
+  }
+
+  .card-inner p {
+    font-size: 0.68rem;
+    line-height: 1.2;
+  }
+
+  .favicon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ===========================================
+     CONTROL PANEL — Ultra compact
+  =========================================== */
+  #control-deck {
+    transform: scale(0.68);
+    transform-origin: top left;
+    top: 0.35rem;
+    left: 0.35rem;
+  }
+
+  .deck-shell {
+    width: 160px;
+    padding: 0.45rem;
+  }
+
+  .deck-collapsed {
+    padding: 3px 9px;
+    font-size: 0.48rem;
+    border-width: 1px;
+  }
+
+  .deck-pill {
+    padding: 3px 6px;
+    font-size: 0.5rem;
+  }
+
+  .deck-tab {
+    padding: 3px 6px;
+    font-size: 0.5rem;
+  }
+}
