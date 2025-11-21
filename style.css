@@ -722,3 +722,70 @@ body {
     font-size: 0.5rem;
   }
 }
+/* ============================================================
+   MOBILE MODE — S23 ULTRA FIX (≤480px)
+============================================================ */
+@media (max-width: 480px) {
+
+  /* Single scrollable row */
+  .bento-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    gap: 1rem !important;
+    padding-bottom: 1rem !important;
+    scroll-snap-type: x mandatory;
+  }
+
+  /* ALL CARDS SAME SIZE */
+  .website-card {
+    min-width: 150px !important;
+    max-width: 150px !important;
+    height: 150px !important;
+    flex: 0 0 auto !important;
+    scroll-snap-align: start;
+  }
+
+  /* Remove desktop layout spans */
+  .bento-wide,
+  .bento-tall {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+    height: 150px !important;
+    width: 150px !important;
+  }
+
+  /* Reduce text and visuals */
+  .card-inner {
+    padding: 10px !important;
+  }
+
+  .card-inner h3 {
+    font-size: 0.8rem !important;
+  }
+
+  .card-inner p {
+    font-size: 0.7rem !important;
+  }
+
+  .favicon {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* Categories more compact */
+  .category-level-0 {
+    padding: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .category-title {
+    font-size: 1.2rem !important;
+  }
+
+  /* Control deck smaller */
+  #control-deck {
+    transform: scale(0.78) !important;
+    transform-origin: top left;
+  }
+}
