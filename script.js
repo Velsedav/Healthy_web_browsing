@@ -381,3 +381,16 @@ document.addEventListener("click", () => {
     clone.pause();
   });
 }, { once: true });
+
+/* ============================================================
+   MOBILE MODE ACTIVATION
+============================================================ */
+function isMobile() {
+  return window.innerWidth <= 480;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (isMobile()) {
+    document.body.classList.add("mobile-mode");
+  }
+});
