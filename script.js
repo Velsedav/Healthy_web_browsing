@@ -4,6 +4,8 @@
 const MODE_SHUFFLE = "shuffle";
 const MODE_FLUID   = "fluid"; // worm mode
 
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
 let currentMode = MODE_FLUID;
 
 const SHUFFLE_SPEED = 2000;
@@ -31,6 +33,8 @@ const THEMES = [
 ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
 
+  document.body.classList.toggle("is-mobile", isMobile);
+
   fetch("websites.json")
     .then(res => res.json())
     .then(data => {
@@ -39,9 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
       loadCategories(data.categories, container);
       createControlDeck();
       restoreTheme();
-      initTiltEffect();
-      attachCardSFX();
-      applyMode(currentMode);
+
+      if (!isMobile) {
+        initTiltEffect();
+        attachCardSFX();
+        applyMode(currentMode);
+      } else {
+        stopAllTimers();
+      }
     });
 
 });
@@ -63,15 +72,28 @@ function loadCategories(categories, container, depth = 0) {
     if (item.mobileOnly && window.innerWidth > 480) return;
     if (!item.mobileOnly && window.innerWidth <= 480 && item.hideOnMobile) return;
 
+    let hasContent = false;
+
     if (item.subcategories) {
+      const before = wrap.childElementCount;
       loadCategories(item.subcategories, wrap, depth + 1);
+      if (wrap.childElementCount > before) hasContent = true;
     }
 
     if (item.websites) {
-      wrap.appendChild(createBentoGrid(item.websites));
+      const filteredWebsites = isMobile
+        ? item.websites.filter(w => w.mobile)
+        : item.websites;
+
+      if (filteredWebsites.length) {
+        wrap.appendChild(createBentoGrid(filteredWebsites));
+        hasContent = true;
+      }
     }
 
-    container.appendChild(wrap);
+    if (hasContent || depth === 0) {
+      container.appendChild(wrap);
+    }
   });
 }
 
@@ -219,6 +241,8 @@ function applyMode(mode) {
 
   stopAllTimers();
 
+  if (isMobile) return; // skip animations on mobile to save battery
+
   const grids = document.querySelectorAll(".bento-grid");
 
   if (mode === MODE_SHUFFLE) {
@@ -333,6 +357,8 @@ function animateGrid(grid, mutate) {
    TILT EFFECT
 ============================================================ */
 function initTiltEffect() {
+  if (isMobile) return;
+
   document.querySelectorAll(".card-inner").forEach(card => {
     card.onmousemove = e => {
       const r = card.getBoundingClientRect();
