@@ -8,16 +8,11 @@
         { "name": "FutureLearn", "url": "https://www.futurelearn.com/" },
         { "name": "edX", "url": "https://www.edx.org/" },
         { "name": "OpenClassrooms", "url": "https://openclassrooms.com/fr/" },
-        {
-          "name": "AWS",
-          "url": "https://aws.amazon.com/fr/training/ramp-up-guides/"
-        },
-        {
-          "name": "Microsoft",
-          "url": "https://learn.microsoft.com/fr-fr/training/career-paths/"
-        }
+        { "name": "AWS", "url": "https://aws.amazon.com/fr/training/ramp-up-guides/" },
+        { "name": "Microsoft", "url": "https://learn.microsoft.com/fr-fr/training/career-paths/" }
       ]
     },
+
     {
       "name": "I.T.",
       "subcategories": [
@@ -34,19 +29,30 @@
               "url": "https://www.professormesser.com/free-a-plus-training/220-1101/220-1101-video/220-1101-training-course/"
             },
             { "name": "Network Chuck", "url": "https://networkchuck.com/" },
+
             {
               "name": "Systèmes & Réseaux",
-              "url": "https://openclassrooms.com/fr/courses?categories=Syst%C3%A8mes%20%26%20R%C3%A9seaux"
+              "url": "https://openclassrooms.com/fr/courses?categories=Syst%C3%A8mes%20%26%20R%C3%A9seaux",
+              "favorite": true
+            },
+
+            {
+              "name": "SenseiTSSR",
+              "url": "https://www.youtube.com/@SenseiTSSR",
+              "favorite": true
+            },
+            {
+              "name": "Learn Linux TV",
+              "url": "https://www.youtube.com/learnlinuxtv",
+              "favorite": true
             }
           ]
         },
+
         {
           "name": "Cybersecurity",
           "websites": [
-            {
-              "name": "Krebs on Security",
-              "url": "https://krebsonsecurity.com/"
-            },
+            { "name": "Krebs on Security", "url": "https://krebsonsecurity.com/" },
             { "name": "OSINTopia", "url": "https://ozint.eu/inscription.cgi" },
             { "name": "Projet FOX", "url": "https://projetfox.com/" },
             {
@@ -57,13 +63,11 @@
               "name": "David BOMBAL course",
               "url": "https://courses.davidbombal.com/courses/enrolled/1216661"
             },
-            {
-              "name": "NoHackMe",
-              "url": "https://blog.nohackme.com/"
-            },
+            { "name": "NoHackMe", "url": "https://blog.nohackme.com/" },
             { "name": "Am I unique ?", "url": "https://amiunique.org/" }
           ]
         },
+
         {
           "name": "Cybersecurity practice",
           "websites": [
@@ -76,43 +80,31 @@
             }
           ]
         },
+
         {
           "name": "Web Development",
           "subcategories": [
             {
               "name": "Useful Links",
               "websites": [
-                {
-                  "name": "MDN Web Docs",
-                  "url": "https://developer.mozilla.org/fr/"
-                },
+                { "name": "MDN Web Docs", "url": "https://developer.mozilla.org/fr/" },
                 { "name": "Roadmap.sh", "url": "https://roadmap.sh/roadmaps" },
-                {
-                  "name": "JS CheatSheet",
-                  "url": "https://github.com/mbeaudru/modern-js-cheatsheet?tab=readme-ov-file#notions"
-                },
+                { "name": "JS CheatSheet", "url": "https://github.com/mbeaudru/modern-js-cheatsheet?tab=readme-ov-file#notions" },
                 { "name": "W3C Validator", "url": "https://validator.w3.org/" },
-                {
-                  "name": "Contrast Ratio",
-                  "url": "https://contrast-ratio.org/"
-                }
+                { "name": "Contrast Ratio", "url": "https://contrast-ratio.org/" }
               ]
             },
+
             {
               "name": "Components",
               "websites": [
                 { "name": "UIverse", "url": "https://uiverse.io/" },
-                {
-                  "name": "CSS Buttons",
-                  "url": "https://www.bestcssbuttongenerator.com/"
-                },
-                {
-                  "name": "AOS Library",
-                  "url": "https://michalsnik.github.io/aos/"
-                },
+                { "name": "CSS Buttons", "url": "https://www.bestcssbuttongenerator.com/" },
+                { "name": "AOS Library", "url": "https://michalsnik.github.io/aos/" },
                 { "name": "Swiper", "url": "https://swiperjs.com/" }
               ]
             },
+
             {
               "name": "Veille design",
               "websites": [
@@ -121,137 +113,96 @@
                 { "name": "Pageflow", "url": "https://pageflows.com/" },
                 { "name": "Nicely Done", "url": "https://nicelydone.club/" },
                 { "name": "App Fuel", "url": "https://www.theappfuel.com/" },
-                {
-                  "name": "Component gallery",
-                  "url": "https://component.gallery/"
-                },
+                { "name": "Component gallery", "url": "https://component.gallery/" },
                 { "name": "awwwards", "url": "https://www.awwwards.com/" }
               ]
             },
+
             {
               "name": "CSS Resources",
               "websites": [
                 { "name": "Malven flex", "url": "https://malven.co/resources" },
                 { "name": "Malven grid", "url": "https://grid.malven.co/" },
-                {
-                  "name": "PX to REM",
-                  "url": "https://nekocalc.com/px-to-rem-converter"
-                },
+                { "name": "PX to REM", "url": "https://nekocalc.com/px-to-rem-converter" },
                 { "name": "CSS-Tricks", "url": "https://css-tricks.com/" },
-                {
-                  "name": "Units flowchart",
-                  "url": "https://youtu.be/Utc_uhvTluk"
-                },
+                { "name": "Units flowchart", "url": "https://youtu.be/Utc_uhvTluk" },
                 { "name": "Malven Co", "url": "https://malven.co/resources" },
-                {
-                  "name": "Resource Cards",
-                  "url": "https://resourcecards.com/"
-                }
+                { "name": "Resource Cards", "url": "https://resourcecards.com/" }
               ]
             },
+
             {
               "name": "Icons",
               "websites": [
-                {
-                  "name": "Font Awesome",
-                  "url": "https://fontawesome.com/icons"
-                },
+                { "name": "Font Awesome", "url": "https://fontawesome.com/icons" },
                 { "name": "Noun Project", "url": "https://thenounproject.com/" }
               ]
             },
+
             {
               "name": "Colors & Effects",
               "websites": [
-                {
-                  "name": "Shader Gradient",
-                  "url": "https://www.shadergradient.co/"
-                },
+                { "name": "Shader Gradient", "url": "https://www.shadergradient.co/" },
                 { "name": "CSS Glass", "url": "https://css.glass/" },
                 { "name": "CSS Gradient.io", "url": "https://cssgradient.io/" },
-                {
-                  "name": "Comeau Shadows",
-                  "url": "https://www.joshwcomeau.com/shadow-palette/"
-                },
+                { "name": "Comeau Shadows", "url": "https://www.joshwcomeau.com/shadow-palette/" },
                 { "name": "LottieLab", "url": "https://www.lottielab.com/" }
               ]
             },
+
             {
               "name": "CSS Shapes",
               "websites": [
-                {
-                  "name": "Magic Pattern",
-                  "url": "https://www.magicpattern.design/tools/css-backgrounds"
-                },
+                { "name": "Magic Pattern", "url": "https://www.magicpattern.design/tools/css-backgrounds" },
                 { "name": "CSS Patterns", "url": "https://css-pattern.com/" },
                 { "name": "Blob Maker", "url": "https://www.blobmaker.app/" },
                 { "name": "Get Waves", "url": "https://getwaves.io/" },
                 { "name": "Haikei", "url": "https://haikei.app/" },
-                {
-                  "name": "Frontend MASTER",
-                  "url": "https://frontendmasters.com/blog/pure-css-halftone-effect-in-3-declarations/"
-                }
+                { "name": "Frontend MASTER", "url": "https://frontendmasters.com/blog/pure-css-halftone-effect-in-3-declarations/" }
               ]
             }
           ]
         },
+
         {
           "name": "A.I.",
           "subcategories": [
             {
               "name": "L.L.M.",
               "websites": [
-                {
-                  "name": "Artficial Analysis",
-                  "url": "https://artificialanalysis.ai/leaderboards/models"
-                },
-                {
-                  "name": "NoteBook LM",
-                  "url": "https://notebooklm.google.com/?pli=1"
-                },
-                {
-                  "name": "Gemini",
-                  "url": "https://gemini.google.com/gems/view"
-                },
-                {
-                  "name": "DeepSeek",
-                  "url": "https://chat.deepseek.com/a/chat/s/eace06e7-7e5f-40c4-926f-8b476ef9160e"
-                },
+                { "name": "Artficial Analysis", "url": "https://artificialanalysis.ai/leaderboards/models" },
+                { "name": "NoteBook LM", "url": "https://notebooklm.google.com/?pli=1" },
+                { "name": "Gemini", "url": "https://gemini.google.com/gems/view" },
+                { "name": "DeepSeek", "url": "https://chat.deepseek.com/a/chat/s/eace06e7-7e5f-40c4-926f-8b476ef9160e" },
                 { "name": "Mistral AI", "url": "https://chat.mistral.ai/chat" },
                 { "name": "ChatGPT", "url": "https://chatgpt.com/" },
                 { "name": "Claude", "url": "https://claude.ai/new" },
                 { "name": "Hugging Face", "url": "https://huggingface.co/" },
-                {
-                  "name": "Perplexity AI",
-                  "url": "https://www.perplexity.ai/"
-                },
+                { "name": "Perplexity AI", "url": "https://www.perplexity.ai/" },
                 { "name": "Grok", "url": "https://grok.x.ai/" },
                 { "name": "Cohere", "url": "https://cohere.com/" }
               ]
             },
+
             {
               "name": "AI Image Generation",
               "websites": [
                 { "name": "Midjourney", "url": "https://www.midjourney.com/" },
-                {
-                  "name": "Recraft AI",
-                  "url": "https://www.recraft.ai/project/6c33fe28-89e1-4379-bf43-ac6253de92d9"
-                },
+                { "name": "Recraft AI", "url": "https://www.recraft.ai/project/6c33fe28-89e1-4379-bf43-ac6253de92d9" },
                 { "name": "DALL-E", "url": "https://labs.openai.com/" },
                 { "name": "Stable Diffusion", "url": "https://stability.ai/" },
                 { "name": "Leonardo AI", "url": "https://leonardo.ai/" },
                 { "name": "NightCafe", "url": "https://nightcafe.studio/" },
                 { "name": "Craiyon", "url": "https://www.craiyon.com/" },
                 { "name": "Artbreeder", "url": "https://www.artbreeder.com/" },
-                {
-                  "name": "Adobe Firefly",
-                  "url": "https://www.adobe.com/sensei/generative-ai/firefly.html"
-                }
+                { "name": "Adobe Firefly", "url": "https://www.adobe.com/sensei/generative-ai/firefly.html" }
               ]
             }
           ]
         }
       ]
     },
+
     {
       "name": "Emploi",
       "subcategories": [
@@ -291,85 +242,90 @@
             { "name": "PME Innovante", "url": "https://exemple-pme-innovante.com/" }
           ]
         },
-                {
+        {
           "name": "Jobboards",
           "websites": [
             { "name": "Indeed", "url": "https://fr.indeed.com/" },
             { "name": "France Travail", "url": "https://www.francetravail.fr/accueil/" },
             { "name": "Hellowork", "url": "https://www.hellowork.com/fr-fr/" },
             { "name": "Welcome to the jungle", "url": "https://www.welcometothejungle.com/fr" },
-            { "name": "Leboncoin", "url":"https://www.leboncoin.fr/c/offres_d_emploi"},
-            { "name": "Talent", "url":"https://fr.talent.com/jobs?l=Marseille&id=bf64300f79da"},
-            { "name": "Cadremploi", "url": "https://www.cadremploi.fr/"},
-            { "name": "MeteoJob", "url": "https://www.meteojob.com/"},
-            {"name": "Jobijoba", "url": "https://www.jobijoba.com/fr/"},
-            {"name": "Option carrière", "url" :"https://www.optioncarriere.com/"},
-            {"name": "APEC", "url":"https://www.apec.fr/"},
-            {"name": "Monster", "url": "https://www.monster.fr/"}
-
+            { "name": "Leboncoin", "url": "https://www.leboncoin.fr/c/offres_d_emploi" },
+            { "name": "Talent", "url": "https://fr.talent.com/jobs?l=Marseille&id=bf64300f79da" },
+            { "name": "Cadremploi", "url": "https://www.cadremploi.fr/" },
+            { "name": "MeteoJob", "url": "https://www.meteojob.com/" },
+            { "name": "Jobijoba", "url": "https://www.jobijoba.com/fr/" },
+            { "name": "Option carrière", "url": "https://www.optioncarriere.com/" },
+            { "name": "APEC", "url": "https://www.apec.fr/" },
+            { "name": "Monster", "url": "https://www.monster.fr/" }
           ]
         }
       ]
     },
+
     {
       "name": "Education",
       "websites": [
         { "name": "Canal-U", "url": "https://www.canal-u.tv/" },
-        {
-          "name": "Collège de France",
-          "url": "https://www.college-de-france.fr/"
-        },
-        { "name": "ENS Savoirs", "url": "http://savoirs.ens.fr/" }
+        { "name": "Collège de France", "url": "https://www.college-de-france.fr/" },
+        { "name": "ENS Savoirs", "url": "http://savoirs.ens.fr/" },
+
+        { "name": "Khan Academy", "url": "https://fr.khanacademy.org/", "favorite": true },
+        { "name": "Yvan Monka", "url": "https://www.youtube.com/channel/UCaDqmzanCq4ZYhdEm0Df9Qg", "favorite": true }
       ]
     },
+
     {
       "name": "Design & Art",
       "subcategories": [
         {
           "name": "Art & Culture",
           "websites": [
-            {
-              "name": "Connaissance des Arts",
-              "url": "https://www.connaissancedesarts.com/"
-            },
+            { "name": "Connaissance des Arts", "url": "https://www.connaissancedesarts.com/" },
             { "name": "Spoon & Tamago", "url": "https://www.spoon-tamago.com/" }
           ]
         }
       ]
     },
+
     {
       "name": "General",
       "websites": [
         { "name": "TED Talks", "url": "https://www.ted.com/" },
-        {
-          "name": "CIA World Factbook",
-          "url": "https://www.cia.gov/the-world-factbook/"
-        },
+        { "name": "CIA World Factbook", "url": "https://www.cia.gov/the-world-factbook/" },
         { "name": "BrainFacts", "url": "https://www.brainfacts.org/" },
-        { "name": "Knowable Magazine", "url": "https://knowablemagazine.org/" }
+        { "name": "Knowable Magazine", "url": "https://knowablemagazine.org/" },
+
+        { "name": "Vaughn Gene", "url": "https://www.youtube.com/@vaughngene", "favorite": true },
+        { "name": "Jeff Su", "url": "https://www.youtube.com/jeffsu", "favorite": true }
       ]
     },
+
     {
       "name": "Finance",
       "websites": [
-        {
-          "name": "La Finance Pour Tous",
-          "url": "https://www.lafinancepourtous.com/"
-        },
-        { "name": "CB Expert", "url": "https://www.cb-expert.fr/" }
+        { "name": "La Finance Pour Tous", "url": "https://www.lafinancepourtous.com/" },
+        { "name": "CB Expert", "url": "https://www.cb-expert.fr/" },
+
+        { "name": "VosFinances Reddit", "url": "https://www.reddit.com/r/vosfinances/wiki/index/", "favorite": true },
+        { "name": "Caroline ROGERS", "url": "https://www.youtube.com/@simplement_caro", "favorite": true }
       ]
     },
+
     {
       "name": "Media",
       "websites": [
-        { "name": "The conversation", "url": "https://theconversation.com/fr" },
+        {
+          "name": "The conversation",
+          "url": "https://theconversation.com/fr",
+          "favorite": true
+        },
         { "name": "Flux RSS", "url": "https://www.inoreader.com/all_articles" },
         { "name": "ICIJ", "url": "https://www.icij.org/" },
-        { "name": "Journalism trust initiative", "url": "https://journalismtrustinitiative.org/"},
-        {"name": "Eco Nord Isère","url": "https://groupe-ecomedia.com/eco-nord-isere/"},
-        {"name": "Bellingcat", "url": "https://fr.bellingcat.com/"},
-        {"name": "Reporters sans frontières", "url": "https://rsf.org/fr"},
-        {"name": "Harvard Business Review", "url": "https://hbr.org/"}
+        { "name": "Journalism trust initiative", "url": "https://journalismtrustinitiative.org/" },
+        { "name": "Eco Nord Isère", "url": "https://groupe-ecomedia.com/eco-nord-isere/" },
+        { "name": "Bellingcat", "url": "https://fr.bellingcat.com/" },
+        { "name": "Reporters sans frontières", "url": "https://rsf.org/fr" },
+        { "name": "Harvard Business Review", "url": "https://hbr.org/" }
       ]
     }
   ]
