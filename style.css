@@ -520,3 +520,86 @@ body {
     transform-origin: top left;
   }
 }
+
+/* ============================================
+   MOBILE FIX — Samsung S23 Ultra (≤ 480px)
+============================================ */
+@media (max-width: 480px) {
+
+  /* Fix container padding so content fits */
+  .container {
+    width: 100%;
+    margin: 3rem auto 2rem;
+    padding: 0 1rem;
+  }
+
+  /* Smaller category titles */
+  .category-title {
+    font-size: 1.3rem;
+  }
+
+  /* Reduce grid density */
+  .bento-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-auto-rows: 160px;
+    gap: 1.2rem; /* huge improvement */
+  }
+
+  /* Limit spans (prevents gaps on mobile) */
+  .bento-wide { grid-column: span 1 !important; }
+  .bento-tall { grid-row: span 1 !important; }
+
+  /* Card scaling */
+  .website-card {
+    transform: scale(0.95);
+  }
+
+  .card-inner {
+    padding: 10px;
+  }
+
+  .card-inner h3 {
+    font-size: 0.85rem;
+  }
+
+  .card-inner p {
+    font-size: 0.75rem;
+    line-height: 1.25;
+  }
+
+  /* Favicon smaller */
+  .favicon {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Control deck fix: shrink + move */
+  #control-deck {
+    transform: scale(0.8);
+    transform-origin: top left;
+    top: 0.6rem;
+    left: 0.6rem;
+  }
+
+  .deck-shell {
+    width: 180px;  /* was 240px */
+    padding: 0.6rem;
+  }
+
+  .deck-collapsed {
+    padding: 4px 10px;
+    font-size: 0.6rem;
+  }
+
+  /* Pills smaller */
+  .deck-pill {
+    padding: 4px 7px;
+    font-size: 0.55rem;
+  }
+
+  .deck-tab {
+    font-size: 0.55rem;
+    padding: 4px 7px;
+  }
+
+}
