@@ -2,7 +2,7 @@
    ANIMATION MODES
 ============================================================ */
 const MODE_SHUFFLE = "shuffle";
-const MODE_FLUID   = "fluid"; // default
+const MODE_FLUID   = "fluid"; // worm mode
 
 let currentMode = MODE_FLUID;
 
@@ -27,32 +27,10 @@ const THEMES = [
 ];
 
 /* ============================================================
-   SIMPLE SFX (Base64 embedded)
-============================================================ */
-const sfx = {
-  hover: new Audio(
-    "data:audio/mp3;base64,//uQxAAAAAADYQAAAeQCAOZJDhAAAD//wAALgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
-  ),
-  click: new Audio(
-    "data:audio/mp3;base64,//uQxAAAAAADYQAAAeQCAOZJDhAAAD//wAALgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
-  )
-};
-
-function playSound(key) {
-  const base = sfx[key];
-  if (!base) return;
-  try {
-    const clone = base.cloneNode();
-    clone.volume = 0.45;
-    clone.currentTime = 0;
-    clone.play().catch(() => {});
-  } catch (e) {}
-}
-
-/* ============================================================
-   DOMContentLoaded — INIT
+   INIT
 ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
+
   fetch("websites.json")
     .then(res => res.json())
     .then(data => {
@@ -65,10 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
       attachCardSFX();
       applyMode(currentMode);
     });
+
 });
 
 /* ============================================================
-   CATEGORY HIERARCHY
+   CATEGORY BUILDER
 ============================================================ */
 function loadCategories(categories, container, depth = 0) {
   categories.forEach(item => {
@@ -79,6 +58,10 @@ function loadCategories(categories, container, depth = 0) {
     title.className = depth === 0 ? "category-title" : "subcategory-title";
     title.textContent = item.name;
     wrap.appendChild(title);
+
+    // MOBILE ONLY CATEGORY SUPPORT
+    if (item.mobileOnly && window.innerWidth > 480) return;
+    if (!item.mobileOnly && window.innerWidth <= 480 && item.hideOnMobile) return;
 
     if (item.subcategories) {
       loadCategories(item.subcategories, wrap, depth + 1);
@@ -93,7 +76,7 @@ function loadCategories(categories, container, depth = 0) {
 }
 
 /* ============================================================
-   BENTO GRID + FAVORITES
+   GRID + FAVORITES
 ============================================================ */
 function createBentoGrid(websites) {
   const grid = document.createElement("div");
@@ -104,21 +87,28 @@ function createBentoGrid(websites) {
     card.className = "website-card";
     card.href = website.url;
     card.target = "_blank";
-    card.rel = "noopener noreferrer";
 
     if (website.favorite) card.classList.add("favorite");
 
+    // Desktop bento layout
     if (i % 7 === 0) card.classList.add("bento-wide");
     else if (i % 9 === 0) card.classList.add("bento-tall");
 
+    // Disable bento spans on mobile
+    if (window.innerWidth <= 480) {
+      card.classList.remove("bento-wide", "bento-tall");
+    }
+
     let domain = "";
     try { domain = new URL(website.url).hostname; } catch {}
-    const icon = website.icon || `https://www.google.com/s2/favicons?domain=${domain}`;
+
+    const icon = website.icon ||
+      `https://www.google.com/s2/favicons?domain=${domain}`;
 
     card.innerHTML = `
       <div class="card-inner">
         <div class="card-header">
-          <img src="${icon}" class="favicon" alt="">
+          <img src="${icon}" class="favicon">
           <h3>${website.name}</h3>
         </div>
         ${website.description ? `<p>${website.description}</p>` : ""}
@@ -132,7 +122,7 @@ function createBentoGrid(websites) {
 }
 
 /* ============================================================
-   CONTROL DECK
+   CONTROL PANEL
 ============================================================ */
 function createControlDeck() {
   const box = document.createElement("div");
@@ -142,10 +132,12 @@ function createControlDeck() {
     <div class="deck-collapsed">CONTROL ▸</div>
     <div class="deck-shell">
       <div class="deck-header">CONTROL PANEL</div>
+
       <div class="deck-tabs">
         <button class="deck-tab active" data-panel="themes">Themes</button>
         <button class="deck-tab" data-panel="modes">Modes</button>
       </div>
+
       <div class="deck-panels">
         <div class="deck-panel deck-panel-themes active"></div>
         <div class="deck-panel deck-panel-modes"></div>
@@ -161,16 +153,11 @@ function createControlDeck() {
   THEMES.forEach(t => {
     const pill = document.createElement("button");
     pill.className = "deck-pill deck-theme-pill";
-    pill.dataset.theme = t.id;
     pill.textContent = t.label;
+    pill.dataset.theme = t.id;
     pill.style.setProperty("--pill-color", t.color);
 
-    pill.addEventListener("click", () => {
-      playSound("click");
-      applyTheme(t.id);
-    });
-    pill.addEventListener("mouseenter", () => playSound("hover"));
-
+    pill.onclick = () => applyTheme(t.id);
     themesPanel.appendChild(pill);
   });
 
@@ -180,35 +167,31 @@ function createControlDeck() {
   ].forEach(m => {
     const pill = document.createElement("button");
     pill.className = "deck-pill deck-mode-pill";
-    pill.dataset.mode = m.id;
     pill.textContent = m.label;
+    pill.dataset.mode = m.id;
 
-    pill.addEventListener("click", () => {
-      playSound("click");
-      applyMode(m.id);
-    });
-    pill.addEventListener("mouseenter", () => playSound("hover"));
-
+    pill.onclick = () => applyMode(m.id);
     modesPanel.appendChild(pill);
   });
 
-  const tabs = box.querySelectorAll(".deck-tab");
-  const panels = box.querySelectorAll(".deck-panel");
+  box.querySelectorAll(".deck-tab").forEach(tab => {
+    tab.onclick = () => {
+      box.querySelectorAll(".deck-tab")
+        .forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      playSound("click");
-      const name = tab.dataset.panel;
-      tabs.forEach(t => t.classList.toggle("active", t === tab));
-      panels.forEach(p =>
-        p.classList.toggle("active", p.classList.contains(`deck-panel-${name}`))
-      );
-    });
+      const panelName = tab.dataset.panel;
+
+      box.querySelectorAll(".deck-panel")
+        .forEach(p => p.classList.remove("active"));
+
+      box.querySelector(`.deck-panel-${panelName}`).classList.add("active");
+    };
   });
 }
 
 /* ============================================================
-   THEME HANDLING
+   THEMES
 ============================================================ */
 function applyTheme(theme) {
   document.body.dataset.theme = theme;
@@ -220,40 +203,44 @@ function applyTheme(theme) {
 }
 
 function restoreTheme() {
-  const saved = localStorage.getItem("activeTheme") || "neon";
-  applyTheme(saved);
+  applyTheme(localStorage.getItem("activeTheme") || "neon");
 }
 
 /* ============================================================
    ANIMATION MODES
 ============================================================ */
 function applyMode(mode) {
+
   currentMode = mode;
 
   document.querySelectorAll(".deck-mode-pill").forEach(p =>
     p.classList.toggle("active", p.dataset.mode === mode)
   );
 
-  stopAllCategoryTimers();
+  stopAllTimers();
 
   const grids = document.querySelectorAll(".bento-grid");
 
   if (mode === MODE_SHUFFLE) {
     grids.forEach(grid => {
-      const id = setInterval(() => smoothShuffle(grid), SHUFFLE_SPEED);
-      shuffleIntervals.set(grid, id);
+      shuffleIntervals.set(
+        grid,
+        setInterval(() => smoothShuffle(grid), SHUFFLE_SPEED)
+      );
     });
   }
 
   if (mode === MODE_FLUID) {
     grids.forEach(grid => {
-      const id = setInterval(() => wormSwap(grid), WORM_SPEED);
-      wormIntervals.set(grid, id);
+      wormIntervals.set(
+        grid,
+        setInterval(() => wormSwap(grid), WORM_SPEED)
+      );
     });
   }
 }
 
-function stopAllCategoryTimers() {
+function stopAllTimers() {
   shuffleIntervals.forEach(clearInterval);
   wormIntervals.forEach(clearInterval);
   shuffleIntervals.clear();
@@ -265,11 +252,13 @@ function stopAllCategoryTimers() {
 ============================================================ */
 function smoothShuffle(grid) {
   if (grid.matches(":hover") || currentMode !== MODE_SHUFFLE) return;
+
   const cards = [...grid.children];
   if (cards.length < 2) return;
 
   animateGrid(grid, () => {
-    cards.sort(() => Math.random() - 0.5).forEach(c => grid.appendChild(c));
+    cards.sort(() => Math.random() - 0.5)
+         .forEach(c => grid.appendChild(c));
   });
 }
 
@@ -278,36 +267,34 @@ function smoothShuffle(grid) {
 ============================================================ */
 function wormSwap(grid) {
   if (grid.matches(":hover") || currentMode !== MODE_FLUID) return;
+
   const cards = [...grid.children];
   if (cards.length < 2) return;
 
   let i = Math.floor(Math.random() * cards.length);
-  for (let x = 0; x < 10 && cards[i].matches(":hover"); x++) {
+  for (let x = 0; x < 6 && cards[i].matches(":hover"); x++)
     i = Math.floor(Math.random() * cards.length);
-  }
 
-  const c1 = cards[i];
-  if (!c1 || c1.matches(":hover")) return;
+  const a = cards[i];
+  if (!a || a.matches(":hover")) return;
 
-  let j = i + (Math.random() < 0.5 ? -1 : 1);
-  if (j < 0 || j >= cards.length) return;
+  const j = Math.random() < 0.5 ? i - 1 : i + 1;
+  if (!cards[j] || cards[j].matches(":hover")) return;
 
-  const c2 = cards[j];
-  if (!c2 || c2.matches(":hover")) return;
+  const b = cards[j];
 
-  animateGrid(grid, () => swap(grid, c1, c2));
-}
-
-function swap(parent, a, b) {
-  const next = a.nextSibling === b ? a : a.nextSibling;
-  parent.insertBefore(b, a);
-  parent.insertBefore(a, next);
+  animateGrid(grid, () => {
+    const next = a.nextSibling === b ? a : a.nextSibling;
+    grid.insertBefore(b, a);
+    grid.insertBefore(a, next);
+  });
 }
 
 /* ============================================================
-   FLIP ENGINE
+   FLIP ANIMATION
 ============================================================ */
 function animateGrid(grid, mutate) {
+
   const cards = [...grid.children];
   if (!cards.length) return;
 
@@ -322,20 +309,22 @@ function animateGrid(grid, mutate) {
   cards.forEach(card => {
     const a = first.get(card), b = last.get(card);
     const dx = a.left - b.left;
-    const dy = a.top - b.top;
+    const dy = a.top  - b.top;
+
     if (dx === 0 && dy === 0) return;
 
     card.style.transition = "transform 0s";
-    card.style.transform = `translate(${dx}px,${dy}px)`;
+    card.style.transform  = `translate(${dx}px, ${dy}px)`;
 
     requestAnimationFrame(() => {
-      card.style.transition = "transform 500ms cubic-bezier(0.22, 0.61, 0.36, 1)";
+      card.style.transition =
+        "transform 500ms cubic-bezier(0.22, 0.61, 0.36, 1)";
       card.style.transform = "translate(0,0)";
 
       setTimeout(() => {
         card.style.transition = "";
         card.style.transform = "";
-      }, 550);
+      }, 520);
     });
   });
 }
@@ -345,52 +334,27 @@ function animateGrid(grid, mutate) {
 ============================================================ */
 function initTiltEffect() {
   document.querySelectorAll(".card-inner").forEach(card => {
-    card.addEventListener("mousemove", e => {
+    card.onmousemove = e => {
       const r = card.getBoundingClientRect();
       const x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
-      const y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+      const y = (e.clientY - r.top  - r.height/ 2) / (r.height/ 2);
 
       card.style.transform =
-        `rotateX(${-y * 12}deg) rotateY(${x * 12}deg) translateZ(10px)`;
-    });
+        `rotateX(${ -y * 12 }deg)
+         rotateY(${  x * 12 }deg)
+         translateZ(10px)`;
+    };
 
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "";
-    });
+    card.onmouseleave = () => card.style.transform = "";
   });
 }
 
 /* ============================================================
-   APPLY SFX TO CARDS
+   SFX
 ============================================================ */
 function attachCardSFX() {
   document.querySelectorAll(".website-card").forEach(card => {
-    card.addEventListener("mouseenter", () => playSound("hover"));
-    card.addEventListener("click", () => playSound("click"));
+    card.onmouseenter = () => {}; // disabled
+    card.onclick      = () => {};
   });
 }
-
-/* ============================================================
-   UNLOCK AUDIO ON FIRST USER CLICK
-============================================================ */
-document.addEventListener("click", () => {
-  Object.values(sfx).forEach(sound => {
-    const clone = sound.cloneNode();
-    clone.volume = 0;
-    clone.play().catch(() => {});
-    clone.pause();
-  });
-}, { once: true });
-
-/* ============================================================
-   MOBILE MODE ACTIVATION
-============================================================ */
-function isMobile() {
-  return window.innerWidth <= 480;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  if (isMobile()) {
-    document.body.classList.add("mobile-mode");
-  }
-});
