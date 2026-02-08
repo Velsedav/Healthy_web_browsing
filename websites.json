@@ -744,6 +744,12 @@
           "url": "https://www.youtube.com/jeffsu",
           "favorite": true,
           "mobile": true
+        },
+        {
+          "name": "Romankogan",
+          "url": "https://romankogan.net/adhd/#",
+          "favorite": true,
+          "mobile": true
         }
       ]
     },
