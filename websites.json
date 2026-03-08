@@ -62,9 +62,9 @@
               "mobile": false
             },
             {
-              "name": "Network Chuck",
-              "url": "https://networkchuck.com/",
-              "mobile": false
+              "name": "Communication of the ACM",
+              "url": "https://cacm.acm.org/",
+              "mobile": true
             },
             {
               "name": "Systèmes & Réseaux",
