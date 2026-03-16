@@ -218,6 +218,11 @@
                   "mobile": true
                 },
                 {
+                  "name" :"Graphic Mama",
+                  "url": "https://graphicmama.com/blog/",
+                  "mobile" : true
+                },
+                {
                   "name": "Dribble",
                   "url": "https://dribbble.com/",
                   "mobile": true
