@@ -997,11 +997,6 @@
           "mobile": true
         },
         {
-          "name": "Flux RSS",
-          "url": "https://www.inoreader.com/all_articles",
-          "mobile": true
-        },
-        {
           "name": "ICIJ",
           "url": "https://www.icij.org/",
           "mobile": true
