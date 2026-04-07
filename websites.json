@@ -4,11 +4,6 @@
       "name": "MOOC",
       "websites": [
         {
-          "name": "Coursera",
-          "url": "https://www.coursera.org/",
-          "mobile": false
-        },
-        {
           "name": "FUN MOOC",
           "url": "https://www.fun-mooc.fr/",
           "mobile": false
@@ -19,22 +14,17 @@
           "mobile": false
         },
         {
-          "name": "edX",
-          "url": "https://www.edx.org/",
-          "mobile": false
-        },
-        {
           "name": "OpenClassrooms",
           "url": "https://openclassrooms.com/fr/",
           "mobile": false
         },
         {
-          "name": "AWS",
+          "name": "AWS Training",
           "url": "https://aws.amazon.com/fr/training/ramp-up-guides/",
           "mobile": false
         },
         {
-          "name": "Microsoft",
+          "name": "Microsoft Learn",
           "url": "https://learn.microsoft.com/fr-fr/training/career-paths/",
           "mobile": false
         }
@@ -193,6 +183,11 @@
                   "mobile": false
                 },
                 {
+                  "name": "Free Frontend",
+                  "url": "https://freefrontend.com/",
+                  "mobile": false
+                },
+                {
                   "name": "CSS Buttons",
                   "url": "https://www.bestcssbuttongenerator.com/",
                   "mobile": false
@@ -218,9 +213,9 @@
                   "mobile": true
                 },
                 {
-                  "name" :"Graphic Mama",
+                  "name": "Graphic Mama",
                   "url": "https://graphicmama.com/blog/",
-                  "mobile" : true
+                  "mobile": true
                 },
                 {
                   "name": "Dribble",
@@ -251,6 +246,21 @@
                   "name": "awwwards",
                   "url": "https://www.awwwards.com/",
                   "mobile": true
+                },
+                {
+                  "name": "Freesourc.es",
+                  "url": "https://freesourc.es/",
+                  "mobile": false
+                },
+                {
+                  "name": "CARI Aesthetics",
+                  "url": "https://cari.institute/aesthetics",
+                  "mobile": true
+                },
+                {
+                  "name": "Are.na — CARI",
+                  "url": "https://www.are.na/consumer-aesthetics-research-institute/channels",
+                  "mobile": true
                 }
               ]
             },
@@ -259,7 +269,7 @@
               "websites": [
                 {
                   "name": "Malven flex",
-                  "url": "https://malven.co/resources",
+                  "url": "https://flex.malven.co/",
                   "mobile": false
                 },
                 {
@@ -280,11 +290,6 @@
                 {
                   "name": "Units flowchart",
                   "url": "https://youtu.be/Utc_uhvTluk",
-                  "mobile": false
-                },
-                {
-                  "name": "Malven Co",
-                  "url": "https://malven.co/resources",
                   "mobile": false
                 },
                 {
@@ -383,7 +388,7 @@
               "name": "L.L.M.",
               "websites": [
                 {
-                  "name": "Artficial Analysis",
+                  "name": "Artificial Analysis",
                   "url": "https://artificialanalysis.ai/leaderboards/models",
                   "mobile": true
                 },
@@ -399,7 +404,7 @@
                 },
                 {
                   "name": "DeepSeek",
-                  "url": "https://chat.deepseek.com/a/chat/s/eace06e7-7e5f-40c4-926f-8b476ef9160e",
+                  "url": "https://chat.deepseek.com/",
                   "mobile": false
                 },
                 {
@@ -449,7 +454,7 @@
                 },
                 {
                   "name": "Recraft AI",
-                  "url": "https://www.recraft.ai/project/6c33fe28-89e1-4379-bf43-ac6253de92d9",
+                  "url": "https://www.recraft.ai/",
                   "mobile": false
                 },
                 {
@@ -497,106 +502,6 @@
       "name": "Emploi",
       "subcategories": [
         {
-          "name": "ESN",
-          "websites": [
-            {
-              "name": "ESN Company 1",
-              "url": "https://exemple-esn-1.com/",
-              "mobile": false
-            },
-            {
-              "name": "ESN Company 2",
-              "url": "https://exemple-esn-2.com/",
-              "mobile": false
-            },
-            {
-              "name": "ESN Company 3",
-              "url": "https://exemple-esn-3.com/",
-              "mobile": false
-            },
-            {
-              "name": "ESN Jobs Board",
-              "url": "https://exemple-esn-jobs.com/",
-              "mobile": false
-            }
-          ]
-        },
-        {
-          "name": "Intérim",
-          "websites": [
-            {
-              "name": "Agence Intérim 1",
-              "url": "https://exemple-interim-1.com/",
-              "mobile": false
-            },
-            {
-              "name": "Agence Intérim 2",
-              "url": "https://exemple-interim-2.com/",
-              "mobile": false
-            },
-            {
-              "name": "Plateforme IT Intérim",
-              "url": "https://exemple-it-interim.com/",
-              "mobile": false
-            },
-            {
-              "name": "Mission IT",
-              "url": "https://exemple-mission-it.com/",
-              "mobile": false
-            }
-          ]
-        },
-        {
-          "name": "Publique",
-          "websites": [
-            {
-              "name": "Place de l'emploi public",
-              "url": "https://exemple-emploi-public.com/",
-              "mobile": false
-            },
-            {
-              "name": "Concours IT publics",
-              "url": "https://exemple-concours-it.com/",
-              "mobile": false
-            },
-            {
-              "name": "Fonction publique territoriale",
-              "url": "https://exemple-fpt.com/",
-              "mobile": false
-            },
-            {
-              "name": "Ministère numérique",
-              "url": "https://exemple-ministere-num.com/",
-              "mobile": false
-            }
-          ]
-        },
-        {
-          "name": "Privé",
-          "websites": [
-            {
-              "name": "Entreprise Tech 1",
-              "url": "https://exemple-tech-1.com/",
-              "mobile": false
-            },
-            {
-              "name": "Startup IT",
-              "url": "https://exemple-startup-it.com/",
-              "mobile": false
-            },
-            {
-              "name": "Multinationale Tech",
-              "url": "https://exemple-multinational.com/",
-              "mobile": false
-            },
-            {
-              "name": "PME Innovante",
-              "url": "https://exemple-pme-innovante.com/",
-              "mobile": false
-            }
-          ]
-        },
-        {
           "name": "Jobboards",
           "websites": [
             {
@@ -626,7 +531,7 @@
             },
             {
               "name": "Talent",
-              "url": "https://fr.talent.com/jobs?l=Marseille&id=bf64300f79da",
+              "url": "https://fr.talent.com/",
               "mobile": false
             },
             {
@@ -682,16 +587,73 @@
           "mobile": true
         },
         {
-          "name": "Khan Academy",
-          "url": "https://fr.khanacademy.org/",
-          "favorite": true,
-          "mobile": false
-        },
-        {
           "name": "Yvan Monka",
           "url": "https://www.youtube.com/channel/UCaDqmzanCq4ZYhdEm0Df9Qg",
           "favorite": true,
           "mobile": false
+        },
+        {
+          "name": "Mr. Math Blog",
+          "url": "http://www.mrmathblog.com/",
+          "mobile": true
+        }
+      ],
+      "subcategories": [
+        {
+          "name": "Skills",
+          "websites": [
+            {
+              "name": "Coursera",
+              "url": "https://www.coursera.org/",
+              "mobile": false
+            },
+            {
+              "name": "edX",
+              "url": "https://www.edx.org/",
+              "mobile": false
+            },
+            {
+              "name": "Khan Academy",
+              "url": "https://fr.khanacademy.org/",
+              "favorite": true,
+              "mobile": false
+            }
+          ]
+        },
+        {
+          "name": "Knowledge",
+          "websites": [
+            {
+              "name": "WikiRoulette",
+              "url": "https://wikiroulette.co/",
+              "mobile": true
+            },
+            {
+              "name": "Whole Earth",
+              "url": "https://wholeearth.info/",
+              "mobile": true
+            },
+            {
+              "name": "Simplifier",
+              "url": "https://simplifier.neocities.org/",
+              "mobile": true
+            },
+            {
+              "name": "Wayne's Word",
+              "url": "https://waynesword.net/",
+              "mobile": true
+            }
+          ]
+        },
+        {
+          "name": "Stats",
+          "websites": [
+            {
+              "name": "Pew Research",
+              "url": "https://www.pewresearch.org/",
+              "mobile": true
+            }
+          ]
         }
       ]
     },
@@ -709,6 +671,151 @@
             {
               "name": "Spoon & Tamago",
               "url": "https://www.spoon-tamago.com/",
+              "mobile": true
+            },
+            {
+              "name": "Arts & Culture",
+              "url": "https://artsandculture.google.com/",
+              "mobile": true
+            },
+            {
+              "name": "British Museum",
+              "url": "https://www.britishmuseum.org/collection",
+              "mobile": true
+            },
+            {
+              "name": "Louvre Online",
+              "url": "https://www.louvre.fr/en/online-tours",
+              "mobile": true
+            },
+            {
+              "name": "Smithsonian VR",
+              "url": "https://naturalhistory.si.edu/visit/virtual-tour",
+              "mobile": true
+            }
+          ]
+        },
+        {
+          "name": "Music",
+          "websites": [
+            {
+              "name": "DnB France",
+              "url": "https://www.dnbfrance.fr/",
+              "mobile": true
+            },
+            {
+              "name": "Metalorgie",
+              "url": "https://www.metalorgie.com/",
+              "mobile": true
+            },
+            {
+              "name": "Rate Your Music",
+              "url": "https://rateyourmusic.com/",
+              "mobile": true
+            },
+            {
+              "name": "Muted.io",
+              "url": "https://muted.io/",
+              "mobile": true
+            },
+            {
+              "name": "Album of the Year",
+              "url": "https://www.albumoftheyear.org/",
+              "mobile": true
+            },
+            {
+              "name": "1001 Albums",
+              "url": "https://1001albumsgenerator.com/",
+              "mobile": true
+            },
+            {
+              "name": "NTS Radio",
+              "url": "https://www.nts.live/",
+              "mobile": true
+            },
+            {
+              "name": "Ishkur's Guide",
+              "url": "https://music.ishkur.com/",
+              "mobile": false
+            },
+            {
+              "name": "Lazy Records",
+              "url": "https://lazyrecords.app/",
+              "mobile": true
+            },
+            {
+              "name": "Black Artist DB",
+              "url": "https://www.blackartistdatabase.co/",
+              "mobile": true
+            },
+            {
+              "name": "Plaza.one",
+              "url": "https://plaza.one/",
+              "mobile": true
+            },
+            {
+              "name": "Every Noise",
+              "url": "https://everynoise.com/",
+              "mobile": true
+            }
+          ]
+        },
+        {
+          "name": "Cinema",
+          "websites": [
+            {
+              "name": "TV Tropes",
+              "url": "https://tvtropes.org/",
+              "mobile": true
+            },
+            {
+              "name": "MUBI Notebook",
+              "url": "https://mubi.com/fr/notebook",
+              "mobile": true
+            },
+            {
+              "name": "Roger Ebert",
+              "url": "https://www.rogerebert.com/",
+              "mobile": true
+            },
+            {
+              "name": "Film Comment",
+              "url": "https://www.filmcomment.com/",
+              "mobile": true
+            },
+            {
+              "name": "BFI",
+              "url": "https://www.bfi.org.uk/",
+              "mobile": true
+            },
+            {
+              "name": "Criterion Essays",
+              "url": "https://www.criterion.com/current/category/2-essays",
+              "mobile": true
+            },
+            {
+              "name": "Senses of Cinema",
+              "url": "https://sensesofcinema.com/",
+              "mobile": true
+            },
+            {
+              "name": "Reverse Shot",
+              "url": "https://reverseshot.org/",
+              "mobile": true
+            },
+            {
+              "name": "Film Grab",
+              "url": "https://film-grab.com/",
+              "mobile": true
+            }
+          ]
+        },
+        {
+          "name": "Littérature",
+          "websites": [
+            {
+              "name": "Library of Short Stories",
+              "url": "https://www.libraryofshortstories.com/",
               "mobile": true
             }
           ]
@@ -755,12 +862,107 @@
           "url": "https://romankogan.net/adhd/#",
           "favorite": true,
           "mobile": true
+        },
+        {
+          "name": "Spoonfed Study",
+          "url": "https://www.youtube.com/@spoonfedstudy",
+          "mobile": true
+        }
+      ]
+    },
+    {
+      "name": "Cool websites",
+      "websites": [
+        {
+          "name": "Bored.com",
+          "url": "https://www.bored.com/",
+          "mobile": true
+        },
+        {
+          "name": "Weather Retro",
+          "url": "https://weather.com/retro/",
+          "mobile": true
+        },
+        {
+          "name": "No Ads Weather",
+          "url": "https://noadsweather.com/?q=42000&lat=45.4333&lon=4.4000&name=Saint-Étienne&region=B9&country=France",
+          "mobile": true
+        },
+        {
+          "name": "My Retro TVs",
+          "url": "https://myretrotvs.com/",
+          "mobile": true
+        },
+        {
+          "name": "Elan School",
+          "url": "https://elan.school/",
+          "mobile": true
+        },
+        {
+          "name": "Neal.fun",
+          "url": "https://neal.fun/",
+          "mobile": true
+        },
+        {
+          "name": "Sandspiel",
+          "url": "https://sandspiel.club/",
+          "mobile": false
+        },
+        {
+          "name": "TypeLit",
+          "url": "https://www.typelit.io/",
+          "mobile": false
+        },
+        {
+          "name": "Windows 93",
+          "url": "https://www.windows93.net/",
+          "mobile": false
+        },
+        {
+          "name": "Webdex Y2K20",
+          "url": "https://webdex-y2k20.newmodels.io/",
+          "mobile": false
+        },
+        {
+          "name": "Window Swap",
+          "url": "https://window-swap.com/",
+          "mobile": true
+        },
+        {
+          "name": "Ribo.zone",
+          "url": "https://ribo.zone/",
+          "mobile": true
+        },
+        {
+          "name": "Radio Garden",
+          "url": "https://radio.garden/",
+          "mobile": true
+        },
+        {
+          "name": "Falling Fruit",
+          "url": "https://fallingfruit.org/",
+          "mobile": true
         }
       ]
     },
     {
       "name": "Finance",
       "websites": [
+        {
+          "name": "Boursorama Débutant",
+          "url": "https://www.boursorama.com/pedagogie/",
+          "mobile": true
+        },
+        {
+          "name": "Boursorama Intermédiaire",
+          "url": "https://www.boursorama.com/pedagogie/intermediaire",
+          "mobile": true
+        },
+        {
+          "name": "Boursorama Avancé",
+          "url": "https://www.boursorama.com/pedagogie/avance",
+          "mobile": true
+        },
         {
           "name": "La Finance Pour Tous",
           "url": "https://www.lafinancepourtous.com/",
@@ -802,6 +1004,11 @@
         {
           "name": "ICIJ",
           "url": "https://www.icij.org/",
+          "mobile": true
+        },
+        {
+          "name": "GIJN",
+          "url": "https://gijn.org/resource/guide-introduction-investigative-journalism/",
           "mobile": true
         },
         {

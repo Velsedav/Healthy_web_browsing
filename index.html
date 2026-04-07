@@ -3,18 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <meta name="description" content="Curated bookmarks for healthy, intentional browsing">
+    <title>Healthy Browsing</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="themes.css">
     <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 <body>
-    
 
+    <!-- ═══ HEADER ═══════════════════════════════════════════ -->
+    <header id="site-header">
+        <div class="hdr-left">
+            <button id="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="true">
+                <span></span><span></span><span></span>
+            </button>
+            <a class="site-name" href="#" aria-label="Healthy Browsing home">
+                Healthy<em>.</em>
+            </a>
+        </div>
 
-    <div class="container" id="categories-container">
-        <!-- Content will be loaded by JavaScript -->
+        <div class="hdr-center">
+            <div id="search-bar" role="search">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Search bookmarks…"
+                    autocomplete="off"
+                    spellcheck="false"
+                    aria-label="Search bookmarks"
+                >
+                <span id="search-count" aria-live="polite"></span>
+                <kbd id="search-hint" aria-hidden="true">/</kbd>
+            </div>
+        </div>
+
+        <div class="hdr-right">
+            <div id="clock" aria-label="Current time">
+                <span id="clock-time">--:--</span>
+                <span id="clock-date"></span>
+            </div>
+            <button id="theme-btn" aria-label="Open appearance settings" aria-expanded="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    <path d="M2 12h20"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ SIDEBAR ══════════════════════════════════════════ -->
+    <nav id="sidebar" aria-label="Category navigation">
+        <ul id="nav-list" role="list"></ul>
+    </nav>
+    <div id="sidebar-overlay" aria-hidden="true"></div>
+
+    <!-- ═══ MAIN LAYOUT ══════════════════════════════════════ -->
+    <div id="layout">
+        <main id="main-content">
+            <p class="loading-state">Loading…</p>
+        </main>
     </div>
+
+    <!-- ═══ APPEARANCE PANEL ═════════════════════════════════ -->
+    <aside id="theme-panel" role="dialog" aria-label="Appearance settings" aria-hidden="true">
+        <div class="panel-head">
+            <span class="panel-title">Appearance</span>
+            <button id="theme-panel-close" aria-label="Close appearance panel">✕</button>
+        </div>
+        <div class="panel-body">
+            <p class="panel-label">Theme</p>
+            <div id="theme-grid" role="radiogroup" aria-label="Select theme"></div>
+            <p class="panel-label" style="margin-top:1.5rem">Motion</p>
+            <div id="motion-pills" role="group" aria-label="Animation mode"></div>
+        </div>
+    </aside>
+    <div id="theme-overlay" aria-hidden="true"></div>
+
     <script src="script.js"></script>
 </body>
 </html>
