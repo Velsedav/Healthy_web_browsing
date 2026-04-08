@@ -634,163 +634,275 @@ body[data-theme^="terminal-"]::after {
    ═══════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
     :root {
-        --gutter: 1.5rem;
-        --card-w: 100%;
+        --gutter: 1.25rem;
+        --masthead-h: 64px;
+        --dock-h: 72px;
     }
 
-    #masthead {
+    html, body {
+        overflow-y: auto; /* Enable natural scrolling for the feed */
         height: auto;
-        padding: 1rem var(--gutter);
-        flex-direction: column;
-        gap: 1rem;
-        background: var(--bg);
+    }
+
+    /* ═══ MASTHEAD (Mobile Slim) ═══ */
+    #masthead {
+        position: fixed;
+        height: var(--masthead-h);
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 0 var(--gutter);
+        border-bottom: 1px solid var(--border);
+        background: linear-gradient(to bottom, var(--bg) 0%, rgba(0,0,0,0.8) 100%);
+        pointer-events: auto;
     }
 
     #global-search-container {
         width: 100%;
+        max-width: 100%;
     }
 
-    .hdr-right {
-        display: none;
+    #global-search {
+        font-size: 0.8rem;
+        border-bottom: none;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.6rem 1rem;
+        border-radius: 12px;
+        text-align: center;
     }
 
-    /* Hide clock on mobile */
+    .hdr-right, #keyboard-help {
+        display: none !important;
+    }
 
+    /* ═══ GALLERY (Cinematic Feed) ═══ */
     #gallery {
-        scroll-snap-type: y mandatory;
-        /* Magnetic vertical scroll */
-        overflow-y: auto;
         display: block;
-        padding-top: 100px;
-        height: 100vh;
+        padding-top: var(--masthead-h);
+        padding-bottom: calc(var(--dock-h) + 2rem);
+        overflow: visible;
+        scroll-behavior: smooth;
     }
 
     .spread {
-        display: flex !important;
-        /* Force all spreads visible in vertical mobile feed */
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        min-width: 100%;
+        min-width: 0;
+        width: 100%;
         height: auto;
-        /* Allow content to dictate size, but snap to top */
-        min-height: 100vh;
-        /* Optional: Make each category feel like a full page spread */
+        min-height: auto;
         flex-direction: column;
-        padding: 1.5rem var(--gutter);
-        border-bottom: 1px solid var(--border);
-        scroll-snap-align: start;
+        padding: 0;
+        margin-bottom: 4rem;
+        opacity: 1 !important;
+        display: flex !important;
+        border-bottom: none;
+        position: relative;
     }
 
+    /* ═══ CATEGORY HEADER (Epic Impact) ═══ */
     .spread-title-container {
+        position: relative;
         width: 100%;
         min-width: 0;
         height: auto;
+        padding: 4rem var(--gutter) 2rem var(--gutter);
         border-right: none;
-        border-bottom: 1px solid var(--border);
-        margin-right: 0;
-        padding-bottom: 1rem;
-        margin-bottom: 2rem;
+        border-bottom: none;
+        background: transparent;
+        z-index: 10;
+        overflow: hidden;
+    }
+
+    .spread-index {
+        font-size: 0.7rem;
+        letter-spacing: 0.3em;
+        margin-bottom: 0.5rem;
+        opacity: 0.4;
     }
 
     .spread-name {
         writing-mode: horizontal-tb;
         transform: none;
-        font-size: 1.25rem;
-        opacity: 0.05;
-        margin-top: 0.25rem;
+        font-size: 4.5rem; /* Massive background impact */
+        position: absolute;
+        bottom: -1rem;
+        left: -1rem;
+        white-space: nowrap;
+        opacity: 0.03;
+        z-index: -1;
     }
 
     .spread-label {
-        position: static;
-        font-size: 1.8rem;
+        position: relative;
+        top: 0;
+        left: 0;
+        font-size: 2.25rem;
+        line-height: 1;
+        letter-spacing: -0.04em;
         margin-bottom: 0.5rem;
+        color: var(--fg);
+        opacity: 1;
     }
 
-    .spread-title-container {
-        width: 100%;
-        min-width: 0;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        margin-right: 0;
-        padding: 0.5rem 0;
-        margin-bottom: 1.5rem;
+    .spread-label::after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 2px;
+        background: var(--accent);
+        margin-top: 1rem;
     }
 
+    /* ═══ CONTENT FLOW ═══ */
     .spread-content {
-        flex-direction: column;
-        gap: 2rem;
+        padding: 0 var(--gutter);
+        gap: 3rem;
     }
 
     .column {
-        min-width: 0;
-        width: 100%;
+        margin-left: 0;
         opacity: 1 !important;
-        /* Force visibility on touch */
-        scroll-snap-align: start;
-        /* Magnetic lock on subcategories */
-        padding-top: 1rem;
+        transform: none !important;
     }
 
-    .column:focus-within {
-        transform: none;
-    }
-
-    .bookmark {
-        width: 100%;
-        padding: 1rem var(--gutter);
-        height: auto;
-        min-height: 64px;
-        /* Essential touch target size */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        display: flex;
-        align-items: center;
-    }
-
-    /* Mobile Homepage Optimization - Priority links for on-the-go */
-    .bookmark.is-mobile-link {
-        background: rgba(255, 255, 255, 0.02);
-        border-right: 1px solid var(--accent);
-        /* Visual indicator */
-    }
-
-    .bookmark.is-mobile-link .b-name {
-        font-weight: 700;
-        color: var(--accent);
-    }
-
-    .bookmark.is-mobile-link::after {
-        content: "mobile";
-        font-size: 0.5rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-left: 1rem;
+    .column-header {
+        font-size: 0.65rem;
+        margin-bottom: 1.25rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.75rem;
         opacity: 0.6;
     }
 
-    /* Force visibility of metadata on mobile (no hover) */
-    .b-meta {
-        opacity: 0.6 !important;
-        font-size: 0.65rem;
+    /* ═══ BOOKMARK CARDS (Premium Touch) ═══ */
+    .bookmark {
+        width: 100%;
+        height: auto;
+        min-height: 80px;
+        padding: 1.25rem;
+        margin-bottom: 0.75rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        transition: transform 0.2s ease, background 0.2s ease;
     }
 
-    /* Remove numerical indices on mobile (no keyboard) */
+    .bookmark:active {
+        transform: scale(0.98);
+        background: rgba(255, 255, 255, 0.06);
+    }
+
     .bookmark::after {
         display: none !important;
     }
 
-    /* Keep the "mobile" tag for priority links */
-    .bookmark.is-mobile-link::after {
-        display: flex !important;
-        content: "mobile";
-        font-size: 0.5rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-left: 1rem;
-        opacity: 0.6;
+    .b-name {
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        white-space: normal;
+        line-height: 1.3;
     }
 
-    #keyboard-help {
-        display: none !important;
+    .b-meta {
+        font-size: 0.65rem;
+        opacity: 0.5 !important;
+        margin-left: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    /* Favorite Card Elevation */
+    .bookmark.is-favorite {
+        background: linear-gradient(135deg, rgba(212, 160, 23, 0.08), transparent);
+        border: 1px solid var(--accent-soft);
+        padding: 1.5rem;
+    }
+
+    .bookmark.is-favorite .b-name {
+        font-size: 1.4rem;
+        color: var(--accent);
+    }
+
+    .b-desc {
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+        color: var(--text-dim);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* ═══ MOBILE DOCK (The Masterpiece) ═══ */
+    #mobile-dock {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 3rem);
+        max-width: 400px;
+        height: var(--dock-h);
+        background: rgba(20, 20, 20, 0.7);
+        backdrop-filter: blur(30px) saturate(180%);
+        -webkit-backdrop-filter: blur(30px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0 1rem;
+        z-index: 2000;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .dock-item {
+        background: transparent;
+        border: none;
+        color: var(--text-dim);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        transition: all 0.3s ease;
+        padding: 0.5rem;
+        flex: 1;
+    }
+
+    .dock-item span {
+        font-size: 0.6rem;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .dock-item.is-active {
+        color: var(--accent);
+    }
+
+    .dock-item svg {
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .dock-item:active svg {
+        transform: scale(1.2);
+    }
+
+    /* Searching State on Mobile */
+    body.is-searching #gallery {
+        padding-top: var(--masthead-h);
+    }
+
+    body.is-searching .spread {
+        margin-bottom: 2rem;
+    }
+
+    body.is-searching .spread-title-container {
+        padding-top: 2rem;
     }
 }

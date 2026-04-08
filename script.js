@@ -30,6 +30,8 @@ async function init() {
         initKeyboardUI();
         initSearch();
         initTheme();
+        initMobileDock();
+        window.addEventListener("resize", handleResize);
 
         // Remove loading state
         document.querySelector(".loading-state")?.remove();
@@ -57,14 +59,25 @@ function render(data) {
 }
 
 function updateSpreadVisibility() {
+    const isMobile = window.innerWidth <= 1024;
     const spreads = document.querySelectorAll(".spread");
+    
     spreads.forEach((spread, i) => {
-        if (i === state.currentSpreadIndex) {
+        if (isMobile) {
+            // Full vertical feed on mobile
             spread.classList.add("is-active");
             spread.style.display = "flex";
+            spread.style.opacity = "1";
+            spread.style.pointerEvents = "auto";
         } else {
-            spread.classList.remove("is-active");
-            spread.style.display = "none";
+            // Immersive horizontal mode on desktop
+            if (i === state.currentSpreadIndex) {
+                spread.classList.add("is-active");
+                spread.style.display = "flex";
+            } else {
+                spread.classList.remove("is-active");
+                spread.style.display = "none";
+            }
         }
     });
 }
@@ -397,4 +410,28 @@ function showToast(themeName) {
         toast.classList.remove("is-visible");
         state.toastTimer = null;
     }, 1500);
+}
+
+function handleResize() {
+    updateSpreadVisibility();
+}
+
+function initMobileDock() {
+    const dockHome = document.getElementById("dock-home");
+    const dockSearch = document.getElementById("dock-search");
+    const dockTheme = document.getElementById("dock-theme");
+    const searchInput = document.getElementById("global-search");
+
+    dockHome?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        document.getElementById("gallery")?.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    dockSearch?.addEventListener("click", () => {
+        searchInput.focus();
+    });
+
+    dockTheme?.addEventListener("click", () => {
+        cycleTheme();
+    });
 }
