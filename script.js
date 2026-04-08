@@ -26,6 +26,7 @@ async function init() {
         state.data = await response.json();
 
         render(state.data);
+        renderMobileCatNav(state.data);
         initClock();
         initKeyboardUI();
         initSearch();
@@ -61,14 +62,19 @@ function render(data) {
 function updateSpreadVisibility() {
     const isMobile = window.innerWidth <= 1024;
     const spreads = document.querySelectorAll(".spread");
+    const dockItems = document.querySelectorAll(".dock-item");
     
     spreads.forEach((spread, i) => {
         if (isMobile) {
-            // Full vertical feed on mobile
-            spread.classList.add("is-active");
-            spread.style.display = "flex";
-            spread.style.opacity = "1";
-            spread.style.pointerEvents = "auto";
+            if (i === state.currentSpreadIndex) {
+                spread.classList.add("is-active");
+                spread.style.display = "flex";
+                spread.style.opacity = "1";
+                spread.style.pointerEvents = "auto";
+            } else {
+                spread.classList.remove("is-active");
+                spread.style.display = "none";
+            }
         } else {
             // Immersive horizontal mode on desktop
             if (i === state.currentSpreadIndex) {
@@ -80,6 +86,13 @@ function updateSpreadVisibility() {
             }
         }
     });
+
+    // Update Dock active state
+    if (isMobile) {
+        dockItems.forEach((item, idx) => {
+            item.classList.toggle("is-active", idx === 0 && !document.body.classList.contains("is-searching"));
+        });
+    }
 }
 
 function focusFirstInActiveSpread() {
@@ -126,6 +139,36 @@ function createSpread(cat, index) {
 
     spread.appendChild(content);
     return spread;
+}
+
+function renderMobileCatNav(data) {
+    const nav = document.getElementById("mobile-cat-nav");
+    if (!nav) return;
+
+    nav.innerHTML = "";
+    data.categories.forEach((cat, index) => {
+        const btn = document.createElement("button");
+        btn.className = "m-cat-btn";
+        if (index === state.currentSpreadIndex) btn.classList.add("is-active");
+        btn.textContent = cat.name;
+        btn.addEventListener("click", () => {
+            state.currentSpreadIndex = index;
+            updateSpreadVisibility();
+            updateMobileCatNav();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        nav.appendChild(btn);
+    });
+}
+
+function updateMobileCatNav() {
+    const btns = document.querySelectorAll(".m-cat-btn");
+    btns.forEach((btn, i) => {
+        btn.classList.toggle("is-active", i === state.currentSpreadIndex);
+        if (i === state.currentSpreadIndex) {
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+    });
 }
 
 function createColumn(sub) {
