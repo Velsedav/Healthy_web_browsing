@@ -157,12 +157,13 @@ body {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    border-radius: 4px; /* Brutalist sharp feel */
+    border-radius: 4px;
+    /* Brutalist sharp feel */
     opacity: 0;
     z-index: 2000;
     transition: transform 0.25s var(--ease-out), opacity 0.25s var(--ease-out);
     pointer-events: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 #theme-toast.is-visible {
@@ -179,8 +180,8 @@ body {
     height: 100%;
     display: flex;
     flex-direction: row;
-    padding: var(--masthead-h) var(--gutter) 4rem var(--gutter);
     scroll-snap-align: start;
+    padding: 20px;
     position: relative;
     flex-shrink: 0;
 }
@@ -192,7 +193,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0 var(--gutter) 2rem var(--gutter);
+    /* padding: 0 var(--gutter) 2rem var(--gutter); */
     border-right: 1px solid var(--border);
     margin-right: 3rem;
     flex-shrink: 0;
@@ -226,12 +227,13 @@ body {
 /* The breadcrumb on top of the spread name */
 .spread-label {
     position: absolute;
-    left: var(--gutter);
+    /* left: var(--gutter); */
     top: 4.5rem;
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
-    font-size: 2.8rem; /* Reduced size to prevent overflow */
+    font-size: 2rem;
+    /* Reduced size to erflow */
     letter-spacing: -0.04em;
     color: var(--accent);
     z-index: 10;
@@ -472,7 +474,8 @@ body[data-theme="magma"] {
     --text-softer: #440000;
 }
 
-body[data-theme="magma"] .bookmark:hover, body[data-theme="magma"] .bookmark:focus {
+body[data-theme="magma"] .bookmark:hover,
+body[data-theme="magma"] .bookmark:focus {
     background: rgba(0, 0, 0, 0.1);
     box-shadow: inset 4px 0 0 #000;
 }
@@ -487,7 +490,8 @@ body[data-theme="magma"] .spread-label {
 body[data-theme="tdr-future"] {
     --bg: #ffffff;
     --fg: #000000;
-    --accent: #ff00ff; /* Pink/Cyan mix */
+    --accent: #ff00ff;
+    /* Pink/Cyan mix */
     --border: #000000;
     --card-h: 70px;
 }
@@ -546,7 +550,7 @@ body[data-theme="tdr-x"] .spread-label {
 
 body[data-theme="tdr-x"] .column {
     clip-path: polygon(0 2%, 100% 0, 100% 98%, 0 100%);
-    background: rgba(255,255,255,0.03);
+    background: rgba(255, 255, 255, 0.03);
     padding: 1rem;
 }
 
@@ -595,116 +599,169 @@ body[data-theme^="terminal-"]::after {
     content: "";
     position: fixed;
     inset: 0;
-    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, transparent 1px, transparent 2px);
+    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0px, transparent 1px, transparent 2px);
     background-size: 100% 3px;
     pointer-events: none;
     z-index: 9999;
-/* ═══════════════════════════════════════════════════════════
+
+    /* ═══════════════════════════════════════════════════════════
    RESPONSIVENESS (MOBILE/TABLET)
    ═══════════════════════════════════════════════════════════ */
-@media (max-width: 1024px) {
-    :root {
-        --gutter: 1.5rem;
-        --card-w: 100%;
-    }
+    @media (max-width: 1024px) {
+        :root {
+            --gutter: 1.5rem;
+            --card-w: 100%;
+        }
 
-    #masthead {
-        height: auto;
-        padding: 1rem var(--gutter);
-        flex-direction: column;
-        gap: 1rem;
-        background: var(--bg);
-    }
+        #masthead {
+            height: auto;
+            padding: 1rem var(--gutter);
+            flex-direction: column;
+            gap: 1rem;
+            background: var(--bg);
+        }
 
-    #global-search-container {
-        width: 100%;
-    }
+        #global-search-container {
+            width: 100%;
+        }
 
-    .hdr-right { display: none; } /* Hide clock on mobile */
+        .hdr-right {
+            display: none;
+        }
 
-    #gallery {
-        scroll-snap-type: none;
-        overflow-y: auto;
-        display: block;
-        padding-top: 120px;
-    }
+        /* Hide clock on mobile */
 
-    .spread {
-        min-width: 100%;
-        height: auto;
-        flex-direction: column;
-        padding: 2rem var(--gutter);
-        border-bottom: 1px solid var(--border);
-    }
+        #gallery {
+            scroll-snap-type: y mandatory;
+            /* Magnetic vertical scroll */
+            overflow-y: auto;
+            display: block;
+            padding-top: 100px;
+            height: 100vh;
+        }
 
-    .spread-title-container {
-        width: 100%;
-        min-width: 0;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        margin-right: 0;
-        padding-bottom: 1rem;
-        margin-bottom: 2rem;
-    }
+        .spread {
+            min-width: 100%;
+            height: auto;
+            /* Allow content to dictate size, but snap to top */
+            min-height: 100vh;
+            /* Optional: Make each category feel like a full page spread */
+            flex-direction: column;
+            padding: 1.5rem var(--gutter);
+            border-bottom: 1px solid var(--border);
+            scroll-snap-align: start;
+        }
 
-    .spread-name {
-        writing-mode: horizontal-tb;
-        transform: none;
-        font-size: 2rem;
-        opacity: 0.1;
-    }
+        .spread-title-container {
+            width: 100%;
+            min-width: 0;
+            height: auto;
+            border-right: none;
+            border-bottom: 1px solid var(--border);
+            margin-right: 0;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
 
-    .spread-label {
-        position: static;
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
+        .spread-name {
+            writing-mode: horizontal-tb;
+            transform: none;
+            font-size: 1.25rem;
+            opacity: 0.05;
+            margin-top: 0.25rem;
+        }
 
-    .spread-content {
-        flex-direction: column;
-        gap: 2rem;
-    }
+        .spread-label {
+            position: static;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
 
-    .column {
-        min-width: 0;
-        width: 100%;
-        opacity: 1 !important; /* Force visibility on touch */
-    }
+        .spread-title-container {
+            width: 100%;
+            min-width: 0;
+            height: auto;
+            border-right: none;
+            border-bottom: 1px solid var(--border);
+            margin-right: 0;
+            padding: 0.5rem 0;
+            margin-bottom: 1.5rem;
+        }
 
-    .column:focus-within {
-        transform: none;
-    }
+        .spread-content {
+            flex-direction: column;
+            gap: 2rem;
+        }
 
-    .bookmark {
-        width: 100%;
-        padding: 1rem var(--gutter);
-        height: auto;
-        min-height: 64px; /* Essential touch target size */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        display: flex;
-        align-items: center;
-    }
+        .column {
+            min-width: 0;
+            width: 100%;
+            opacity: 1 !important;
+            /* Force visibility on touch */
+            scroll-snap-align: start;
+            /* Magnetic lock on subcategories */
+            padding-top: 1rem;
+        }
 
-    /* Mobile Homepage Optimization - Priority links for on-the-go */
-    .bookmark.is-mobile-link {
-        background: rgba(255, 255, 255, 0.02);
-        border-right: 1px solid var(--accent); /* Visual indicator */
-    }
-    
-    .bookmark.is-mobile-link .b-name {
-        font-weight: 700;
-        color: var(--accent);
-    }
+        .column:focus-within {
+            transform: none;
+        }
 
-    .bookmark.is-mobile-link::after {
-        content: "mobile";
-        font-size: 0.5rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-left: 1rem;
-        opacity: 0.6;
-    }
+        .bookmark {
+            width: 100%;
+            padding: 1rem var(--gutter);
+            height: auto;
+            min-height: 64px;
+            /* Essential touch target size */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+        }
 
-    #keyboard-help { display: none; }
-}
+        /* Mobile Homepage Optimization - Priority links for on-the-go */
+        .bookmark.is-mobile-link {
+            background: rgba(255, 255, 255, 0.02);
+            border-right: 1px solid var(--accent);
+            /* Visual indicator */
+        }
+
+        .bookmark.is-mobile-link .b-name {
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .bookmark.is-mobile-link::after {
+            content: "mobile";
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-left: 1rem;
+            opacity: 0.6;
+        }
+
+        /* Force visibility of metadata on mobile (no hover) */
+        .b-meta {
+            opacity: 0.6 !important;
+            font-size: 0.65rem;
+        }
+
+        /* Remove numerical indices on mobile (no keyboard) */
+        .bookmark::after {
+            display: none !important;
+        }
+
+        /* Keep the "mobile" tag for priority links */
+        .bookmark.is-mobile-link::after {
+            display: flex !important;
+            content: "mobile";
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-left: 1rem;
+            opacity: 0.6;
+        }
+
+        #keyboard-help {
+            display: none !important;
+        }
+    }
