@@ -21,6 +21,7 @@
     --gutter: 4rem;
     --card-w: 420px;
     --card-h: 56px;
+    --title-w: 420px;
 
     /* Animations */
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -130,16 +131,20 @@ body {
    GALLERY (Horizontal Flow)
    ═══════════════════════════════════════════════════════════ */
 #gallery {
-    height: 100vh;
+    flex: 1;
     display: flex;
     flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
+    /* Desktop: Immersive Single-Category Mode */
+    overflow: hidden; 
     scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    padding: 0;
+    position: relative;
+}
+
+body.is-searching #gallery {
+    overflow-x: auto;
     scrollbar-width: none;
 }
+
 
 /* ═══════════════════════════════════════════════════════════
    THEME TOAST
@@ -180,24 +185,31 @@ body {
     height: 100%;
     display: flex;
     flex-direction: row;
-    scroll-snap-align: start;
-    padding: 140px var(--gutter) 4rem var(--gutter);
+    padding: 0; /* Vertical padding moved to children for full-height lines */
     position: relative;
     flex-shrink: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
-/* The massive vertical title */
+.spread:not(.is-active) {
+    pointer-events: none;
+}
+
+/* The massive vertical title - Now Sticky & Full Height */
 .spread-title-container {
-    min-width: 320px;
-    height: 100%;
+    min-width: var(--title-w);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    /* padding: 0 var(--gutter) 2rem var(--gutter); */
     border-right: 1px solid var(--border);
-    margin-right: 3rem;
     flex-shrink: 0;
-    position: relative;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    background: var(--bg);
+    padding: 140px var(--gutter) 4rem var(--gutter);
 }
 
 .spread-index {
@@ -224,22 +236,22 @@ body {
     user-select: none;
 }
 
-/* The breadcrumb on top of the spread name */
+/* Floating Tag Detail */
 .spread-label {
     position: absolute;
-    /* left: var(--gutter); */
-    top: 4.5rem;
+    top: 5rem;
+    left: var(--gutter);
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
-    font-size: 2rem;
-    /* Reduced size to erflow */
+    font-size: 2.2rem;
     letter-spacing: -0.04em;
     color: var(--accent);
-    z-index: 10;
+    z-index: 60;
     line-height: 1;
     pointer-events: none;
     white-space: nowrap;
+    opacity: 0.9;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -251,6 +263,8 @@ body {
     gap: 4rem;
     height: 100%;
     flex: 1;
+    padding-top: 140px;
+    padding-bottom: 4rem;
 }
 
 .column {
@@ -259,6 +273,10 @@ body {
     min-width: var(--card-w);
     height: 100%;
     transition: opacity var(--transition), transform var(--transition);
+    margin-left: var(--gutter);
+    scroll-margin-left: calc(var(--title-w) + var(--gutter));
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 .column:not(:focus-within) {
@@ -644,6 +662,9 @@ body[data-theme^="terminal-"]::after {
         }
 
         .spread {
+            display: flex !important; /* Force all spreads visible in vertical mobile feed */
+            opacity: 1 !important;
+            pointer-events: auto !important;
             min-width: 100%;
             height: auto;
             /* Allow content to dictate size, but snap to top */

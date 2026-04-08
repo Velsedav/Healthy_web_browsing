@@ -7,10 +7,11 @@
 // STATE
 const state = {
     data: null,
-    focusedIndex: -1, 
+    focusedIndex: -1,
     bookmarks: [],
     themes: ["void", "obsidian", "aurora", "synth", "magma", "tdr-future", "tdr-x", "terminal-green", "terminal-amber", "terminal-orange"],
     currentTheme: 0,
+    currentSpreadIndex: 0, // Track active "page"
     toastTimer: null
 };
 
@@ -23,13 +24,13 @@ async function init() {
     try {
         const response = await fetch("websites.json");
         state.data = await response.json();
-        
+
         render(state.data);
         initClock();
         initKeyboardUI();
         initSearch();
         initTheme();
-        
+
         // Remove loading state
         document.querySelector(".loading-state")?.remove();
     } catch (err) {
@@ -47,16 +48,33 @@ function render(data) {
         gallery.appendChild(spread);
     });
 
-    // Update flat bookmark list for keyboard nav
     state.bookmarks = Array.from(document.querySelectorAll(".bookmark"));
-    
-    // Auto-focus first bookmark after a brief delay
+    updateSpreadVisibility();
+
     setTimeout(() => {
-        if (state.bookmarks.length > 0) {
-            state.focusedIndex = 0;
-            state.bookmarks[0].focus();
-        }
+        focusFirstInActiveSpread();
     }, 500);
+}
+
+function updateSpreadVisibility() {
+    const spreads = document.querySelectorAll(".spread");
+    spreads.forEach((spread, i) => {
+        if (i === state.currentSpreadIndex) {
+            spread.classList.add("is-active");
+            spread.style.display = "flex";
+        } else {
+            spread.classList.remove("is-active");
+            spread.style.display = "none";
+        }
+    });
+}
+
+function focusFirstInActiveSpread() {
+    const activeSpread = document.querySelectorAll(".spread")[state.currentSpreadIndex];
+    if (activeSpread) {
+        const firstB = activeSpread.querySelector(".bookmark:not([style*='display: none'])");
+        if (firstB) firstB.focus();
+    }
 }
 
 function createSpread(cat, index) {
@@ -102,7 +120,7 @@ function createColumn(sub) {
     col.className = "column";
 
     const websites = sub.websites || [];
-    
+
     col.innerHTML = `
         <div class="column-header">
             <span class="ch-name">${sub.name}</span>
@@ -151,7 +169,7 @@ function initKeyboardUI() {
         if (e.key === "Escape") {
             const searchInput = document.getElementById("global-search");
             const val = searchInput.value;
-            
+
             if (val.length > 0) {
                 // If there's text, clear it but stay in the bar? 
                 // Or clear and exit? Usually ESC = clear and exit.
@@ -223,26 +241,25 @@ function initKeyboardUI() {
 }
 
 function moveFocus(delta) {
-    const spread = document.activeElement?.closest(".spread") || document.querySelector(".spread");
-    if (!spread) return;
+    const activeSpread = document.querySelectorAll(".spread")[state.currentSpreadIndex];
+    if (!activeSpread) return;
 
-    const visibleCols = Array.from(spread.querySelectorAll(".column:not([style*='display: none'])"));
+    const visibleCols = Array.from(activeSpread.querySelectorAll(".column:not([style*='display: none'])"));
     if (visibleCols.length === 0) return;
 
-    // Find current column index
     let currentCol = document.activeElement?.closest(".column");
     let idx = visibleCols.indexOf(currentCol);
-    
-    // If nothing focused or first focus in spread, default starting point
     if (idx === -1) idx = (delta > 0) ? -1 : 0;
 
     idx = Math.max(0, Math.min(visibleCols.length - 1, idx + delta));
     const targetCol = visibleCols[idx];
-    
+
     if (targetCol) {
         const firstB = targetCol.querySelector(".bookmark:not([style*='display: none'])");
         if (firstB) {
             firstB.focus();
+            // In single spread mode, we may still need horizontal scroll if the spread is very wide (IT)
+            targetCol.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         }
     }
 }
@@ -271,22 +288,12 @@ function selectBookmarkInCurrentSpread(idx) {
 }
 
 function jumpSpread(delta) {
-    const visibleSpreads = Array.from(document.querySelectorAll(".spread:not([style*='display: none'])"));
-    if (visibleSpreads.length === 0) return;
+    const spreads = document.querySelectorAll(".spread");
+    const count = spreads.length;
 
-    const currentSpread = document.activeElement.closest(".spread");
-    let idx = visibleSpreads.indexOf(currentSpread);
-    
-    idx = Math.max(0, Math.min(visibleSpreads.length - 1, idx + delta));
-    const target = visibleSpreads[idx];
-    
-    if (target) {
-        const firstB = target.querySelector(".bookmark:not([style*='display: none'])");
-        if (firstB) {
-            firstB.focus();
-            scrollToElement(target);
-        }
-    }
+    state.currentSpreadIndex = Math.max(0, Math.min(count - 1, state.currentSpreadIndex + delta));
+    updateSpreadVisibility();
+    focusFirstInActiveSpread();
 }
 
 function scrollToElement(el) {
@@ -300,12 +307,19 @@ function initSearch() {
     const input = document.getElementById("global-search");
     input.addEventListener("input", (e) => {
         const val = e.target.value.toLowerCase().trim();
-        
+        const body = document.body;
+
         // Reset visibility first
         state.bookmarks.forEach(b => b.style.display = "flex");
         document.querySelectorAll(".column, .spread").forEach(el => el.style.display = "flex");
 
-        if (val.length < 2) return;
+        if (val.length < 2) {
+            body.classList.remove("is-searching");
+            updateSpreadVisibility(); // Return to focused mode
+            return;
+        }
+
+        body.classList.add("is-searching");
 
         // Filter bookmarks
         state.bookmarks.forEach(b => {
@@ -320,10 +334,12 @@ function initSearch() {
             col.style.display = hasVisible ? "flex" : "none";
         });
 
-        // Hide empty spreads
+        // Hide empty spreads & make them visible (ignore immersive index)
         document.querySelectorAll(".spread").forEach(spread => {
             const hasVisible = spread.querySelector(".bookmark:not([style*='display: none'])");
             spread.style.display = hasVisible ? "flex" : "none";
+            spread.style.opacity = hasVisible ? "1" : "0";
+            spread.style.pointerEvents = hasVisible ? "auto" : "none";
         });
     });
 }
@@ -341,11 +357,11 @@ function initClock() {
 
     function tick() {
         const d = new Date();
-        timeEl.textContent = d.getHours().toString().padStart(2, '0') + ":" + 
-                             d.getMinutes().toString().padStart(2, '0');
+        timeEl.textContent = d.getHours().toString().padStart(2, '0') + ":" +
+            d.getMinutes().toString().padStart(2, '0');
         dateEl.textContent = `${DAYS[d.getDay()]} ${d.getDate()} ${MONTHS[d.getMonth()]}`;
     }
-    
+
     tick();
     setInterval(tick, 1000);
 }
