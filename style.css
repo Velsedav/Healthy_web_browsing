@@ -181,7 +181,7 @@ body {
     display: flex;
     flex-direction: row;
     scroll-snap-align: start;
-    padding: 20px;
+    padding: 140px var(--gutter) 4rem var(--gutter);
     position: relative;
     flex-shrink: 0;
 }
@@ -466,7 +466,7 @@ body[data-theme="synth"] {
 }
 
 body[data-theme="magma"] {
-    --bg: #990000;
+    --bg: #d40000; /* Vibrant high-contrast blood red */
     --fg: #000000;
     --accent: #550000;
     --border: rgba(0, 0, 0, 0.4);
@@ -474,10 +474,12 @@ body[data-theme="magma"] {
     --text-softer: #440000;
 }
 
-body[data-theme="magma"] .bookmark:hover,
-body[data-theme="magma"] .bookmark:focus {
-    background: rgba(0, 0, 0, 0.1);
-    box-shadow: inset 4px 0 0 #000;
+body[data-theme="magma"] .b-name {
+    font-weight: 700;
+}
+
+body[data-theme="magma"] .column:not(:focus-within) {
+    opacity: 0.7; /* Force visibility for dark text on red */
 }
 
 body[data-theme="magma"] .spread-label {
@@ -603,11 +605,12 @@ body[data-theme^="terminal-"]::after {
     background-size: 100% 3px;
     pointer-events: none;
     z-index: 9999;
+}
 
-    /* ═══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════
    RESPONSIVENESS (MOBILE/TABLET)
    ═══════════════════════════════════════════════════════════ */
-    @media (max-width: 1024px) {
+@media (max-width: 1024px) {
         :root {
             --gutter: 1.5rem;
             --card-w: 100%;

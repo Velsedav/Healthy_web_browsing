@@ -147,23 +147,46 @@ function createBookmark(w) {
 // KEYBOARD NAVIGATION
 function initKeyboardUI() {
     window.addEventListener("keydown", (e) => {
-        // Don't intercept global keys if search is focused
-        if (document.activeElement.id === "global-search") {
-            if (e.key === "Escape") {
-                document.activeElement.blur();
-                state.bookmarks[state.focusedIndex]?.focus();
+        // 1. GLOBAL HOTKEYS (Handle even inside Search Bar)
+        if (e.key === "Escape") {
+            const searchInput = document.getElementById("global-search");
+            const val = searchInput.value;
+            
+            if (val.length > 0) {
+                // If there's text, clear it but stay in the bar? 
+                // Or clear and exit? Usually ESC = clear and exit.
+                searchInput.value = "";
+                // Manually trigger input event to reset filter
+                searchInput.dispatchEvent(new Event('input'));
+                searchInput.blur();
+            } else {
+                searchInput.blur();
             }
             return;
         }
 
-        // Numpad & Digit Bookmark Selection (1-9) within current spread
-        if (e.code.startsWith("Digit") || e.code.startsWith("Numpad")) {
-            const num = parseInt(e.key);
-            if (!isNaN(num) && num > 0) {
+        if (e.key.toLowerCase() === "t") {
+            cycleTheme();
+            return;
+        }
+
+        // 2. SEARCH FOCUS
+        if (e.key === "/") {
+            const input = document.getElementById("global-search");
+            if (document.activeElement !== input) {
                 e.preventDefault();
-                selectBookmarkInCurrentSpread(num - 1);
+                input.focus();
+                input.select();
+                return;
             }
         }
+
+        // 3. IGNORE NAVIGATION KEYS IF TYPING
+        if (e.target.tagName === "INPUT") return;
+
+        // 4. NAVIGATION
+        const spread = document.activeElement?.closest(".spread") || document.querySelector(".spread");
+        if (!spread) return;
 
         switch (e.key) {
             case "ArrowDown":
@@ -186,18 +209,15 @@ function initKeyboardUI() {
                 e.preventDefault();
                 jumpSpread(-1);
                 break;
-            case "/":
+        }
+
+        // Numpad & Digit Bookmark Selection (1-9) within current spread
+        if (e.code.startsWith("Digit") || e.code.startsWith("Numpad")) {
+            const num = parseInt(e.key);
+            if (!isNaN(num) && num > 0) {
                 e.preventDefault();
-                document.getElementById("global-search").focus();
-                break;
-            case "t":
-            case "T":
-                cycleTheme();
-                break;
-            case "Escape":
-                state.focusedIndex = 0;
-                scrollToFocused();
-                break;
+                selectBookmarkInCurrentSpread(num - 1);
+            }
         }
     });
 }
