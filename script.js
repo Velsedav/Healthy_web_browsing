@@ -465,15 +465,33 @@ function initScrollSpy() {
   }
 
   document.addEventListener("scroll", () => {
+    _toastReady = true; // enable toast once user actually scrolls
     if (!ticking) { requestAnimationFrame(update); ticking = true; }
   }, { passive: true });
 
-  // Fire on load for initial state
+  // Fire on load for initial state (no toast)
   update();
 }
 
+let _lastToastSection = null;
+let _toastTimer = null;
+let _toastReady = false; // suppress toast on initial page load
+
+function showSectionToast(label) {
+  let toast = document.getElementById("section-toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "section-toast";
+    document.body.appendChild(toast);
+  }
+  toast.textContent = label;
+  toast.classList.add("visible");
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => toast.classList.remove("visible"), 1800);
+}
+
 function setActiveNav(id) {
-  // Deactivate all
+  // ── Sidebar links ──────────────────────────────────────────
   document.querySelectorAll(".nav-link, .nav-child-link").forEach(el => {
     el.classList.remove("active");
   });
@@ -481,21 +499,47 @@ function setActiveNav(id) {
     el.classList.remove("has-active-child");
   });
 
-  // Activate matching link
   const target = document.querySelector(`[data-target="${id}"]`);
-  if (!target) return;
+  if (target) {
+    target.classList.add("active");
+    const parentItem = target.closest(".nav-item.has-children");
+    if (parentItem) {
+      parentItem.classList.add("has-active-child");
+      if (!parentItem.classList.contains("is-open")) {
+        parentItem.classList.add("is-open");
+        const btn = parentItem.querySelector(".nav-link[aria-expanded]");
+        if (btn) btn.setAttribute("aria-expanded", "true");
+      }
+    }
+  }
 
-  target.classList.add("active");
+  // ── Section / subcat is-active classes ────────────────────
+  document.querySelectorAll(".cat-section.is-active").forEach(el => el.classList.remove("is-active"));
+  document.querySelectorAll(".subcat.is-active").forEach(el => el.classList.remove("is-active"));
 
-  // If it's a child link, mark the parent nav-item
-  const parentItem = target.closest(".nav-item.has-children");
-  if (parentItem) {
-    parentItem.classList.add("has-active-child");
-    // Auto-expand the parent if not already open
-    if (!parentItem.classList.contains("is-open")) {
-      parentItem.classList.add("is-open");
-      const btn = parentItem.querySelector(".nav-link[aria-expanded]");
-      if (btn) btn.setAttribute("aria-expanded", "true");
+  const spyEl = document.getElementById(id);
+  if (!spyEl) return;
+
+  // Mark the cat-section (and optionally the subcat)
+  const catSection = spyEl.classList.contains("cat-section")
+    ? spyEl
+    : spyEl.closest(".cat-section");
+  if (catSection) catSection.classList.add("is-active");
+
+  const subcat = spyEl.classList.contains("subcat") ? spyEl : null;
+  if (subcat) subcat.classList.add("is-active");
+
+  // ── Section name toast — fires when crossing into a new cat-section ──
+  if (catSection) {
+    const sectionId = catSection.id;
+    if (sectionId !== _lastToastSection) {
+      _lastToastSection = sectionId;
+      if (_toastReady) {
+        const navLabel = document.querySelector(`[data-target="${sectionId}"] .nav-label`)?.textContent
+                      || catSection.querySelector(".cat-heading")?.textContent
+                      || "";
+        if (navLabel) showSectionToast(navLabel);
+      }
     }
   }
 }

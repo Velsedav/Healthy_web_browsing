@@ -938,6 +938,11 @@ body.sidebar-closed #layout   { margin-left: 0; }
   to   { opacity: 1; transform: translateX(0); }
 }
 
+@keyframes lineIn {
+  from { width: 0; opacity: 0; }
+  to   { width: 48px; opacity: 1; }
+}
+
 /* Cards start invisible and animate in when their grid becomes visible */
 .bento-grid:not(.is-visible) .website-card {
   opacity: 0;
@@ -948,9 +953,60 @@ body.sidebar-closed #layout   { margin-left: 0; }
   animation-delay: calc(var(--card-i, 0) * 28ms);
 }
 
-/* Section headings slide in */
+/* Section heading slides in on first view */
 .cat-section.is-visible > .cat-heading {
   animation: sectionIn 0.32s var(--ease-out) both;
+}
+
+/* ::after line draws in on first view */
+.cat-section.is-visible > .cat-heading::after {
+  animation: lineIn 0.5s var(--ease-out) 0.12s both;
+}
+
+/* ── Active section — heading accent color + expanded glowing underline ── */
+.cat-section.is-active > .cat-heading {
+  color: var(--hover-border);
+}
+/* Only apply the expanded width once the entrance animation has settled */
+.cat-section.is-visible.is-active > .cat-heading::after {
+  animation: none; /* stop lineIn, let transition take over */
+  width: 80px;
+  opacity: 1;
+  box-shadow: 0 0 8px var(--hover-glow), 0 0 16px var(--hover-glow);
+}
+
+/* Active subcat heading brightens */
+.subcat.is-active > .subcat-heading {
+  color: var(--card-text);
+  border-left-color: var(--hover-border);
+  opacity: 1;
+}
+
+/* ── Section name toast — floats briefly when you cross a section boundary ── */
+#section-toast {
+  position: fixed;
+  top: calc(var(--header-h) + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  z-index: 300;
+  background: rgba(5, 8, 22, 0.92);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  font-family: "Zen Dots", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--hover-border);
+  pointer-events: none;
+  opacity: 0;
+  backdrop-filter: blur(12px);
+  white-space: nowrap;
+  transition: opacity 0.2s ease, transform 0.2s var(--ease-out);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.4), 0 0 12px var(--hover-glow);
+}
+#section-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* ═══════════════════════════════════════════════════════════
