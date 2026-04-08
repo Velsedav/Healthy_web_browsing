@@ -402,3 +402,96 @@ body[data-theme="ember"] .website-card:hover .card-inner {
 body[data-theme="ember"] .website-card:hover::before {
   filter: blur(34px) brightness(1.25);
 }
+
+/* ============================================================
+   09 — PRISM
+   Pure Monolith, Silver Frosted Glass over AMOLED Black
+============================================================ */
+body[data-theme="prism"] {
+  background:
+    radial-gradient(ellipse at 50% -20%, rgba(255, 255, 255, 0.15), transparent 60%),
+    radial-gradient(ellipse at 50% 120%, rgba(255, 255, 255, 0.08), transparent 60%),
+    #000000;
+
+  --background-main: #000000;
+  --card-bg:         rgba(255, 255, 255, 0.03);
+  --card-bg-soft:    rgba(255, 255, 255, 0.015);
+  --card-border:        rgba(255, 255, 255, 0.12);
+  --hover-border:       rgba(255, 255, 255, 0.85);
+  --hover-glow:         rgba(255, 255, 255, 0.15);
+  --hover-glow-strong:  rgba(255, 255, 255, 0.45);
+  --aura:               rgba(255, 255, 255, 0.35);
+  --card-text:  #ffffff;
+  --card-desc:  #a1a1aa;
+  --titles:     #ffffff;
+  --crt-rgb-opacity:  0;
+  --crt-scan-opacity: 0.02;
+  --cat0-bg:     rgba(255, 255, 255, 0.04);
+  --cat1-bg:     rgba(255, 255, 255, 0.025);
+  --cat2-bg:     rgba(255, 255, 255, 0.015);
+  --cat0-border: rgba(255, 255, 255, 0.18);
+  --cat1-border: rgba(255, 255, 255, 0.12);
+  --cat2-border: rgba(255, 255, 255, 0.08);
+  --cat0-title-bar: rgba(255, 255, 255, 0.12);
+  --cat1-title-bar: rgba(255, 255, 255, 0.08);
+  --cat2-title-bar: rgba(255, 255, 255, 0.05);
+}
+
+body[data-theme="prism"] .website-card:hover .card-inner {
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.8),
+    0 0 15px  rgba(255, 255, 255, 0.25),
+    inset 0 0 45px rgba(255, 255, 255, 0.1);
+  filter: contrast(1.1);
+}
+
+body[data-theme="prism"] .website-card:hover::before {
+  filter: blur(20px);
+  background: radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+}
+
+/* ============================================================
+   10 — QUARTZ (Desktop Default)
+   Deep Space Navy / Slate frost for IPS panels
+============================================================ */
+body[data-theme="quartz"] {
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(56, 189, 248, 0.1), transparent 50%),
+    radial-gradient(ellipse at 20% 100%, rgba(129, 140, 248, 0.08), transparent 50%),
+    #0f172a;
+
+  --background-main: #0f172a;
+  --card-bg:         rgba(30, 41, 59, 0.4);
+  --card-bg-soft:    rgba(15, 23, 42, 0.2);
+  --card-border:        rgba(148, 163, 184, 0.1);
+  --hover-border:       rgba(226, 232, 240, 0.6);
+  --hover-glow:         rgba(56, 189, 248, 0.15);
+  --hover-glow-strong:  rgba(129, 140, 248, 0.3);
+  --aura:               rgba(56, 189, 248, 0.2);
+  --card-text:  #f8fafc;
+  --card-desc:  #94a3b8;
+  --titles:     #ffffff;
+  --crt-rgb-opacity:  0;
+  --crt-scan-opacity: 0.03;
+  --cat0-bg:     rgba(56, 189, 248, 0.04);
+  --cat1-bg:     rgba(129, 140, 248, 0.03);
+  --cat2-bg:     rgba(139, 92, 246, 0.02);
+  --cat0-border: rgba(56, 189, 248, 0.15);
+  --cat1-border: rgba(129, 140, 248, 0.12);
+  --cat2-border: rgba(139, 92, 246, 0.1);
+  --cat0-title-bar: rgba(56, 189, 248, 0.1);
+  --cat1-title-bar: rgba(129, 140, 248, 0.08);
+  --cat2-title-bar: rgba(139, 92, 246, 0.05);
+}
+
+body[data-theme="quartz"] .typo-row:hover .card-inner {
+  filter: contrast(1.05);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.5),
+    inset 0 0 40px rgba(148, 163, 184, 0.1);
+}
+
+body[data-theme="quartz"] .typo-row:hover::before {
+  filter: blur(24px);
+  background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.3) 0%, rgba(129, 140, 248, 0.2) 50%, transparent 80%);
+}

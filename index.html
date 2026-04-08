@@ -3,85 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Curated bookmarks for healthy, intentional browsing">
-    <title>Healthy Browsing</title>
+    <meta name="description" content="Healthy Browsing — A premium, keyboard-centric editorial dashboard for curated bookmarks.">
+    <title>Healthy. — Editorial Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="themes.css">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
-<body>
+<body data-theme="void">
 
-    <!-- ═══ HEADER ═══════════════════════════════════════════ -->
-    <header id="site-header">
+    <!-- ═══ MASTHEAD ═══════════════════════════════════════════ -->
+    <header id="masthead">
         <div class="hdr-left">
-            <button id="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="true">
-                <span></span><span></span><span></span>
-            </button>
-            <a class="site-name" href="#" aria-label="Healthy Browsing home">
-                Healthy<em>.</em>
-            </a>
+            <a href="#" class="logo">Healthy<span>.</span></a>
         </div>
 
         <div class="hdr-center">
-            <div id="search-bar" role="search">
-                <span class="search-icon" aria-hidden="true">⌕</span>
-                <input
-                    type="search"
-                    id="search-input"
-                    placeholder="Search bookmarks…"
-                    autocomplete="off"
-                    spellcheck="false"
-                    aria-label="Search bookmarks"
-                >
-                <span id="search-count" aria-live="polite"></span>
-                <kbd id="search-hint" aria-hidden="true">/</kbd>
+            <div id="global-search-container">
+                <input type="text" id="global-search" placeholder="Type to search…" autocomplete="off" spellcheck="false" aria-label="Search bookmarks">
             </div>
         </div>
 
         <div class="hdr-right">
-            <div id="clock" aria-label="Current time">
-                <span id="clock-time">--:--</span>
-                <span id="clock-date"></span>
+            <div class="controls">
+                <div id="global-clock">
+                    <span id="c-time">00:00</span> — <span id="c-date">MON 01 JAN</span>
+                </div>
             </div>
-            <button id="theme-btn" aria-label="Open appearance settings" aria-expanded="false">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                    <path d="M2 12h20"/>
-                </svg>
-            </button>
         </div>
     </header>
 
-    <!-- ═══ SIDEBAR ══════════════════════════════════════════ -->
-    <nav id="sidebar" aria-label="Category navigation">
-        <ul id="nav-list" role="list"></ul>
-    </nav>
-    <div id="sidebar-overlay" aria-hidden="true"></div>
+    <!-- ═══ GALLERY ════════════════════════════════════════════ -->
+    <main id="gallery" role="list">
+       <!-- Dynamic spreads go here -->
+       <div class="loading-state" style="display: flex; align-items: center; justify-content: center; height: 100vh; width: 100vw; font-family: 'Outfit'; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;">
+           Curating Content...
+       </div>
+    </main>
 
-    <!-- ═══ MAIN LAYOUT ══════════════════════════════════════ -->
-    <div id="layout">
-        <main id="main-content">
-            <p class="loading-state">Loading…</p>
-        </main>
+    <div id="theme-toast" aria-live="polite">Theme Updated</div>
+
+    <!-- ═══ KEYBOARD OVERLAY ═══════════════════════════════════ -->
+    <footer id="keyboard-help" aria-hidden="true">
+        <div class="k-hint"><kbd>↑</kbd><kbd>↓</kbd> Nav</div>
+        <div class="k-hint"><kbd>←</kbd><kbd>→</kbd> Categorical Jump</div>
+        <div class="k-hint"><kbd>/</kbd> Search</div>
+        <div class="k-hint"><kbd>T</kbd> Theme</div>
+        <div class="k-hint"><kbd>Esc</kbd> Reset</div>
+    </footer>
+
+    <!-- ═══ SEARCH RESULTS ═════════════════════════════════════ -->
+    <div id="search-overlay" hidden>
+        <div id="search-results-list"></div>
     </div>
-
-    <!-- ═══ APPEARANCE PANEL ═════════════════════════════════ -->
-    <aside id="theme-panel" role="dialog" aria-label="Appearance settings" aria-hidden="true">
-        <div class="panel-head">
-            <span class="panel-title">Appearance</span>
-            <button id="theme-panel-close" aria-label="Close appearance panel">✕</button>
-        </div>
-        <div class="panel-body">
-            <p class="panel-label">Theme</p>
-            <div id="theme-grid" role="radiogroup" aria-label="Select theme"></div>
-            <p class="panel-label" style="margin-top:1.5rem">Motion</p>
-            <div id="motion-pills" role="group" aria-label="Animation mode"></div>
-        </div>
-    </aside>
-    <div id="theme-overlay" aria-hidden="true"></div>
 
     <script src="script.js"></script>
 </body>
