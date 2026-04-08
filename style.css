@@ -335,10 +335,12 @@ body.sidebar-closed #layout   { margin-left: 0; }
   max-height: 0;
   transition: max-height 0.3s ease;
 }
-.nav-item.is-open .nav-children { max-height: 600px; }
+.nav-item.is-open .nav-children { max-height: 1000px; }
 
 .nav-child-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   padding: 0.36rem 0.9rem 0.36rem 2.5rem;
   text-decoration: none;
   font-size: 0.7rem;
@@ -349,9 +351,36 @@ body.sidebar-closed #layout   { margin-left: 0; }
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 100%;
+  background: none;
+  border-top: none; border-right: none; border-bottom: none;
+  cursor: pointer;
+  text-align: left;
 }
+.nav-child-link .nav-child-label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .nav-child-link:hover   { color: var(--card-text); opacity: 1; background: rgba(255,255,255,0.03); }
 .nav-child-link.active  { color: var(--hover-border); border-left-color: var(--hover-border); opacity: 1; }
+
+/* Expandable child toggle chevron */
+.nav-child-toggle .nav-chevron { opacity: 0.35; transition: transform var(--ease); margin-left: auto; }
+.nav-child-item.is-open > .nav-child-toggle .nav-chevron { transform: rotate(90deg); opacity: 0.6; }
+
+/* Grandchildren (depth 2) */
+.nav-grandchildren {
+  list-style: none;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+.nav-child-item.is-open > .nav-grandchildren { max-height: 600px; }
+
+.nav-grandchildren .nav-child-link {
+  padding-left: 3.4rem;
+  font-size: 0.65rem;
+  opacity: 0.5;
+}
+.nav-grandchildren .nav-child-link:hover { opacity: 0.85; }
+.nav-grandchildren .nav-child-link.active { opacity: 1; }
 
 /* Divider */
 .nav-divider {

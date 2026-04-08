@@ -368,7 +368,6 @@ function buildSidebar(categories) {
     li.dataset.section = slug;
 
     if (hasSubs) {
-      // Expandable group
       li.innerHTML = `
         <button class="nav-link" aria-expanded="false" data-target="${slug}" data-section="${slug}">
           <span class="nav-icon" aria-hidden="true">${icon}</span>
@@ -381,30 +380,17 @@ function buildSidebar(categories) {
       const btn = li.querySelector(".nav-link");
       const children = li.querySelector(".nav-children");
 
-      // Subcategory links
       cat.subcategories.forEach(sub => {
-        const subSlug = `${slug}-${toSlug(sub.name)}`;
-        const subLi = document.createElement("li");
-        const subLink = document.createElement("a");
-        subLink.className = "nav-child-link";
-        subLink.href = `#${subSlug}`;
-        subLink.textContent = sub.name;
-        subLink.dataset.target = subSlug;
-        subLink.addEventListener("click", e => { e.preventDefault(); scrollToSection(subSlug); });
-        subLi.appendChild(subLink);
-        children.appendChild(subLi);
+        children.appendChild(buildNavSubItem(sub, `${slug}-${toSlug(sub.name)}`));
       });
 
-      // Toggle expand/collapse
       btn.addEventListener("click", () => {
         const isOpen = li.classList.toggle("is-open");
         btn.setAttribute("aria-expanded", String(isOpen));
-        // Scroll to section on first click if not yet open
         if (isOpen) scrollToSection(slug);
       });
 
     } else {
-      // Simple link
       li.innerHTML = `
         <a class="nav-link" href="#${slug}" data-target="${slug}">
           <span class="nav-icon" aria-hidden="true">${icon}</span>
@@ -418,7 +404,6 @@ function buildSidebar(categories) {
       });
     }
 
-    // Divider before last item
     if (i === categories.length - 1) {
       const div = document.createElement("li");
       div.className = "nav-divider";
@@ -428,6 +413,48 @@ function buildSidebar(categories) {
 
     navList.appendChild(li);
   });
+}
+
+// Recursive: builds a nav child item that may itself have expandable grandchildren
+function buildNavSubItem(sub, slug) {
+  const hasSubs = sub.subcategories && sub.subcategories.length > 0;
+  const li = document.createElement("li");
+
+  if (hasSubs) {
+    li.className = "nav-child-item has-children";
+    li.innerHTML = `
+      <button class="nav-child-link nav-child-toggle" aria-expanded="false" data-target="${slug}">
+        <span class="nav-child-label">${escapeHtml(sub.name)}</span>
+        <span class="nav-chevron" aria-hidden="true">›</span>
+      </button>
+      <ul class="nav-grandchildren" role="list"></ul>
+    `;
+
+    const btn = li.querySelector(".nav-child-toggle");
+    const grandchildren = li.querySelector(".nav-grandchildren");
+
+    sub.subcategories.forEach(child => {
+      grandchildren.appendChild(buildNavSubItem(child, `${slug}-${toSlug(child.name)}`));
+    });
+
+    btn.addEventListener("click", e => {
+      e.preventDefault();
+      const isOpen = li.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", String(isOpen));
+      scrollToSection(slug);
+    });
+
+  } else {
+    const link = document.createElement("a");
+    link.className = "nav-child-link";
+    link.href = `#${slug}`;
+    link.textContent = sub.name;
+    link.dataset.target = slug;
+    link.addEventListener("click", e => { e.preventDefault(); scrollToSection(slug); });
+    li.appendChild(link);
+  }
+
+  return li;
 }
 
 function scrollToSection(id) {
@@ -502,14 +529,26 @@ function setActiveNav(id) {
   const target = document.querySelector(`[data-target="${id}"]`);
   if (target) {
     target.classList.add("active");
-    const parentItem = target.closest(".nav-item.has-children");
-    if (parentItem) {
-      parentItem.classList.add("has-active-child");
-      if (!parentItem.classList.contains("is-open")) {
-        parentItem.classList.add("is-open");
-        const btn = parentItem.querySelector(".nav-link[aria-expanded]");
-        if (btn) btn.setAttribute("aria-expanded", "true");
+
+    // Walk up and open/mark every expandable ancestor
+    let ancestor = target.parentElement;
+    while (ancestor) {
+      if (ancestor.classList.contains("nav-item") && ancestor.classList.contains("has-children")) {
+        ancestor.classList.add("has-active-child");
+        if (!ancestor.classList.contains("is-open")) {
+          ancestor.classList.add("is-open");
+          const btn = ancestor.querySelector(":scope > .nav-link[aria-expanded]");
+          if (btn) btn.setAttribute("aria-expanded", "true");
+        }
       }
+      if (ancestor.classList.contains("nav-child-item") && ancestor.classList.contains("has-children")) {
+        if (!ancestor.classList.contains("is-open")) {
+          ancestor.classList.add("is-open");
+          const btn = ancestor.querySelector(":scope > .nav-child-toggle");
+          if (btn) btn.setAttribute("aria-expanded", "true");
+        }
+      }
+      ancestor = ancestor.parentElement;
     }
   }
 
