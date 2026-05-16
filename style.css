@@ -1,37 +1,29 @@
 /* ═══════════════════════════════════════════════════════════
    HEALTHY BROWSING — THE EDITORIAL DASHBOARD
-   Design System: Brutalist Typography / AMOLED Luxury
    ═══════════════════════════════════════════════════════════ */
 
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap");
 
 :root {
-    /* Base Colors - Default: VOID (AMOLED Black) */
     --bg: #000000;
     --fg: #ffffff;
     --accent: #d4a017;
-    /* Obsidian Gold */
     --accent-soft: rgba(212, 160, 23, 0.2);
     --border: rgba(255, 255, 255, 0.1);
     --text-dim: #888888;
     --text-softer: #444444;
 
-    /* Layout */
     --masthead-h: 80px;
     --gutter: 4rem;
     --card-w: 420px;
     --card-h: 56px;
     --title-w: 420px;
 
-    /* Animations */
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
     --transition: 400ms var(--ease-out);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   RESET
-   ═══════════════════════════════════════════════════════════ */
+/* ── RESET ──────────────────────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -45,16 +37,22 @@ body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    /* Desktop first: scroll is handled by the #gallery */
     background: var(--bg);
     color: var(--fg);
     font-family: 'Inter', -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   MASTHEAD (Fixed)
-   ═══════════════════════════════════════════════════════════ */
+/* Desktop: hide mobile-only elements */
+.hide-on-desktop {
+    display: none;
+}
+
+#mobile-dock {
+    display: none;
+}
+
+/* ── MASTHEAD ───────────────────────────────────────────────────────────── */
 #masthead {
     position: fixed;
     top: 0;
@@ -72,19 +70,6 @@ body {
 
 #masthead * {
     pointer-events: auto;
-}
-
-.logo {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 1.25rem;
-    letter-spacing: -0.02em;
-    text-decoration: none;
-    color: var(--fg);
-}
-
-.logo span {
-    color: var(--accent);
 }
 
 .controls {
@@ -127,28 +112,54 @@ body {
     color: var(--text-softer);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   GALLERY (Horizontal Flow)
-   ═══════════════════════════════════════════════════════════ */
+/* ── LOADING / ERROR ────────────────────────────────────────────────────── */
+.loading-state,
+.error-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.error-state {
+    color: #c0392b;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* ── GALLERY ────────────────────────────────────────────────────────────── */
 #gallery {
     flex: 1;
     display: flex;
     flex-direction: row;
-    /* Desktop: Immersive Single-Category Mode */
     overflow: hidden;
-    scroll-behavior: smooth;
     position: relative;
 }
 
+/* Search mode: show all spreads horizontally scrollable */
 body.is-searching #gallery {
     overflow-x: auto;
     scrollbar-width: none;
 }
 
+body.is-searching #gallery::-webkit-scrollbar {
+    display: none;
+}
 
-/* ═══════════════════════════════════════════════════════════
-   THEME TOAST
-   ═══════════════════════════════════════════════════════════ */
+/* In search mode, reset carousel transform so all columns are reachable */
+body.is-searching .column-track {
+    transform: none !important;
+    transition: none;
+    flex-wrap: wrap;
+}
+
+/* ── THEME TOAST ────────────────────────────────────────────────────────── */
 #theme-toast {
     position: fixed;
     bottom: 3rem;
@@ -163,7 +174,6 @@ body.is-searching #gallery {
     text-transform: uppercase;
     letter-spacing: 0.15em;
     border-radius: 4px;
-    /* Brutalist sharp feel */
     opacity: 0;
     z-index: 2000;
     transition: transform 0.25s var(--ease-out), opacity 0.25s var(--ease-out);
@@ -176,27 +186,21 @@ body.is-searching #gallery {
     transform: translateX(-50%) translateY(0);
 }
 
-#gallery::-webkit-scrollbar {
-    display: none;
-}
-
+/* ── SPREAD ─────────────────────────────────────────────────────────────── */
 .spread {
     min-width: 100vw;
     height: 100%;
     display: flex;
     flex-direction: row;
-    padding: 0;
-    /* Vertical padding moved to children for full-height lines */
     position: relative;
     flex-shrink: 0;
-    transition: opacity 0.5s ease-in-out;
 }
 
 .spread:not(.is-active) {
     pointer-events: none;
 }
 
-/* The massive vertical title - Now Sticky & Full Height */
+/* Tall title panel on the left */
 .spread-title-container {
     min-width: var(--title-w);
     height: 100vh;
@@ -237,7 +241,6 @@ body.is-searching #gallery {
     user-select: none;
 }
 
-/* Floating Tag Detail */
 .spread-label {
     position: absolute;
     top: 5rem;
@@ -255,17 +258,30 @@ body.is-searching #gallery {
     opacity: 0.9;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   COLUMNS & LISTS
-   ═══════════════════════════════════════════════════════════ */
+/* ── COLUMNS ────────────────────────────────────────────────────────────── */
+
+/* Clips the track; does NOT scroll — the track moves via transform */
 .spread-content {
     display: flex;
     flex-direction: row;
-    gap: 4rem;
     height: 100%;
     flex: 1;
+    min-width: 0;
+    overflow: hidden;
     padding-top: 140px;
     padding-bottom: 4rem;
+}
+
+/* The moving strip.
+   position: relative is CRITICAL — it makes .column's offsetParent = .column-track,
+   so col.offsetLeft is always track-relative and unaffected by animation state. */
+.column-track {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
 }
 
 .column {
@@ -273,13 +289,11 @@ body.is-searching #gallery {
     flex-direction: column;
     min-width: var(--card-w);
     height: 100%;
-    transition: opacity var(--transition), transform var(--transition);
     margin-left: var(--gutter);
-    scroll-margin-left: calc(var(--title-w) + var(--gutter));
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    transition: opacity var(--transition);
 }
 
+/* Dim columns that don't have focus — subtle peripheral cue */
 .column:not(:focus-within) {
     opacity: 0.2;
 }
@@ -287,10 +301,6 @@ body.is-searching #gallery {
 .column:focus-within .column-header {
     border-color: var(--accent);
     color: var(--accent);
-}
-
-.column:focus-within {
-    transform: translateY(-5px);
 }
 
 .column-header {
@@ -311,15 +321,12 @@ body.is-searching #gallery {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    /* Standard editorial list */
     gap: 0;
     height: 100%;
     align-content: flex-start;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   BOOKMARK CARD (Typographic Row)
-   ═══════════════════════════════════════════════════════════ */
+/* ── BOOKMARK CARD ──────────────────────────────────────────────────────── */
 .bookmark {
     display: flex;
     align-items: center;
@@ -332,7 +339,6 @@ body.is-searching #gallery {
     outline: none;
     position: relative;
     padding: 0 4rem 0 1rem;
-    /* Added generous right padding for index hints */
     scroll-margin: 100px;
 }
 
@@ -351,7 +357,6 @@ body.is-searching #gallery {
     content: attr(data-index);
     position: absolute;
     right: 1.25rem;
-    /* Tucked into the safety padding */
     top: 50%;
     transform: translateY(-50%);
     font-family: 'Outfit', monospace;
@@ -399,7 +404,6 @@ body.is-searching #gallery {
     opacity: 1;
 }
 
-/* Featured / Favorite styling */
 .bookmark.is-favorite {
     height: 120px;
     flex-direction: column;
@@ -412,7 +416,6 @@ body.is-searching #gallery {
 }
 
 .bookmark.is-favorite .b-name {
-    font-family: 'Outfit', sans-serif;
     font-weight: 600;
     font-size: 1.5rem;
     white-space: normal;
@@ -430,9 +433,7 @@ body.is-searching #gallery {
     overflow: hidden;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   OVERLAYS
-   ═══════════════════════════════════════════════════════════ */
+/* ── KEYBOARD HINT BAR ──────────────────────────────────────────────────── */
 #keyboard-help {
     position: fixed;
     bottom: 2rem;
@@ -461,9 +462,7 @@ body.is-searching #gallery {
     margin-right: 4px;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   THEMES (CSS OVERRIDES)
-   ═══════════════════════════════════════════════════════════ */
+/* ── THEMES ─────────────────────────────────────────────────────────────── */
 body[data-theme="obsidian"] {
     --bg: #060500;
     --fg: #fff8e4;
@@ -487,7 +486,6 @@ body[data-theme="synth"] {
 
 body[data-theme="magma"] {
     --bg: #d40000;
-    /* Vibrant high-contrast blood red */
     --fg: #000000;
     --accent: #550000;
     --border: rgba(0, 0, 0, 0.4);
@@ -501,21 +499,17 @@ body[data-theme="magma"] .b-name {
 
 body[data-theme="magma"] .column:not(:focus-within) {
     opacity: 0.7;
-    /* Force visibility for dark text on red */
 }
 
 body[data-theme="magma"] .spread-label {
     color: #000;
-    text-shadow: none;
     mix-blend-mode: multiply;
 }
 
-/* TDR-FUTURE (Original Wipeout 3 feel) */
 body[data-theme="tdr-future"] {
     --bg: #ffffff;
     --fg: #000000;
     --accent: #ff00ff;
-    /* Pink/Cyan mix */
     --border: #000000;
     --card-h: 70px;
 }
@@ -524,8 +518,6 @@ body[data-theme="tdr-future"] .spread-label {
     background: #000;
     color: #fff;
     padding: 0.4rem 1.5rem;
-    font-style: normal;
-    font-family: 'Outfit';
     clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
     white-space: nowrap;
 }
@@ -544,7 +536,6 @@ body[data-theme="tdr-future"] .bookmark:hover {
     clip-path: circle(150% at 100% 50%);
 }
 
-/* NEW TDR-X (Wipeout 2097 / 2048 Inspired) */
 body[data-theme="tdr-x"] {
     --bg: #000000;
     --fg: #ffffff;
@@ -575,10 +566,9 @@ body[data-theme="tdr-x"] .spread-label {
 body[data-theme="tdr-x"] .column {
     clip-path: polygon(0 2%, 100% 0, 100% 98%, 0 100%);
     background: rgba(255, 255, 255, 0.03);
-    padding: 1rem;
+    padding: 2rem;
 }
 
-/* TERMINAL GREEN */
 body[data-theme="terminal-green"] {
     --bg: #000000;
     --fg: #00ff41;
@@ -586,7 +576,6 @@ body[data-theme="terminal-green"] {
     --border: rgba(0, 255, 65, 0.25);
 }
 
-/* TERMINAL AMBER */
 body[data-theme="terminal-amber"] {
     --bg: #000000;
     --fg: #ffb000;
@@ -594,7 +583,6 @@ body[data-theme="terminal-amber"] {
     --border: rgba(255, 176, 0, 0.25);
 }
 
-/* TERMINAL ORANGE */
 body[data-theme="terminal-orange"] {
     --bg: #000000;
     --fg: #ff5c00;
@@ -629,27 +617,68 @@ body[data-theme^="terminal-"]::after {
     z-index: 9999;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   RESPONSIVENESS (MOBILE/TABLET)
-   ═══════════════════════════════════════════════════════════ */
-@media (max-width: 1024px) {
+/* ── COMPACT DESKTOP (641px – 1024px) — keep carousel, shrink panels ───── */
+@media (min-width: 641px) and (max-width: 1024px) {
+    :root {
+        --title-w: 160px;
+        --card-w: 320px;
+        --gutter: 1.5rem;
+    }
+
+    /* Slim down the title panel — hide the giant vertical text */
+    .spread-title-container {
+        padding: 140px 1.5rem 2rem 1.5rem;
+        justify-content: flex-end;
+    }
+
+    .spread-name {
+        display: none;
+    }
+
+    .spread-label {
+        font-size: 1.4rem;
+        white-space: normal;
+        line-height: 1.2;
+    }
+
+    .spread-index {
+        font-size: 0.7rem;
+    }
+
+    /* Narrower bookmarks to match --card-w */
+    .bookmark {
+        width: var(--card-w);
+    }
+
+    .bookmark-list {
+        height: 100%;
+    }
+
+    /* Hide clock and keyboard hint to save space */
+    #keyboard-help {
+        display: none;
+    }
+}
+
+/* ── MOBILE / PHONE (≤ 640px) ───────────────────────────────────────────── */
+@media (max-width: 640px) {
     :root {
         --gutter: 1.25rem;
-        --masthead-h: 130px; /* Taller for two-tier nav */
+        --masthead-h: 130px;
         --dock-h: 72px;
     }
 
-    html, body {
+    html,
+    body {
         overflow-y: auto;
         height: auto;
-        background: var(--bg);
     }
 
     .hide-on-desktop {
         display: block !important;
     }
 
-    /* ═══ MASTHEAD (Multi-Tier) ═══ */
+    /* ── Masthead ── */
     #masthead {
         position: fixed;
         height: var(--masthead-h);
@@ -659,7 +688,6 @@ body[data-theme^="terminal-"]::after {
         backdrop-filter: blur(30px);
         -webkit-backdrop-filter: blur(30px);
         border-bottom: 1px solid var(--border);
-        z-index: 1000;
         pointer-events: auto;
     }
 
@@ -685,7 +713,7 @@ body[data-theme^="terminal-"]::after {
         text-align: left;
     }
 
-    /* ═══ CATEGORY SCROLLER ═══ */
+    /* ── Category nav ── */
     #mobile-cat-nav {
         display: flex !important;
         overflow-x: auto;
@@ -694,7 +722,6 @@ body[data-theme^="terminal-"]::after {
         padding: 0.5rem var(--gutter) 1rem var(--gutter);
         scrollbar-width: none;
         -ms-overflow-style: none;
-        scroll-behavior: smooth;
     }
 
     #mobile-cat-nav::-webkit-scrollbar {
@@ -702,8 +729,12 @@ body[data-theme^="terminal-"]::after {
     }
 
     .m-cat-btn {
+        -webkit-appearance: none;
+        appearance: none;
         background: transparent;
         border: none;
+        outline: none;
+        cursor: pointer;
         color: var(--text-dim);
         font-family: 'Outfit', sans-serif;
         font-weight: 700;
@@ -712,7 +743,7 @@ body[data-theme^="terminal-"]::after {
         letter-spacing: 0.1em;
         white-space: nowrap;
         padding: 0.5rem 0.5rem;
-        transition: all 0.3s ease;
+        transition: color 0.2s ease;
         position: relative;
     }
 
@@ -731,38 +762,50 @@ body[data-theme^="terminal-"]::after {
         border-radius: 100px;
     }
 
-    .hdr-right, #keyboard-help {
+    .hdr-right,
+    #keyboard-help {
         display: none !important;
     }
 
-    /* ═══ GALLERY (Focused) ═══ */
+    /* ── Gallery ── */
     #gallery {
         display: block;
+        overflow: visible;
         padding-top: var(--masthead-h);
         padding-bottom: calc(var(--dock-h) + 3rem);
     }
 
+    /* ── Spread ── */
     .spread {
+        display: none;
+        flex-direction: column;
+        min-width: unset;
+        height: auto;
         opacity: 0;
         transform: translateY(10px);
-        transition: opacity 0.4s ease, transform 0.4s ease;
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
     .spread.is-active {
+        display: flex !important;
         opacity: 1;
         transform: translateY(0);
-        display: flex !important;
-        flex-direction: column;
     }
 
     .spread-title-container {
-        padding: 2.5rem var(--gutter) 1.5rem var(--gutter);
-        border: none;
+        position: sticky;
+        top: var(--masthead-h);
         height: auto;
+        min-width: unset;
+        border: none;
+        padding: 1.25rem var(--gutter) 1rem var(--gutter);
+        z-index: 50;
+        justify-content: flex-start;
+        flex-direction: column;
     }
 
     .spread-name {
-        display: none; /* Removed for cleaner look */
+        display: none;
     }
 
     .spread-index {
@@ -771,16 +814,62 @@ body[data-theme^="terminal-"]::after {
         margin-bottom: 0.25rem;
     }
 
-    .spread-label {
-        font-size: 2.5rem;
-        letter-spacing: -0.05em;
-        color: var(--fg);
+    /* Strip ALL desktop/theme positioning from spread-label */
+    .spread-label,
+    body[data-theme] .spread-label {
+        position: static !important;
+        font-size: 2.2rem !important;
+        letter-spacing: -0.05em !important;
+        color: var(--fg) !important;
+        white-space: normal !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+        clip-path: none !important;
+        transform: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        text-shadow: none !important;
     }
 
-    /* ═══ BOOKMARK CARDS (Ultra Refined) ═══ */
+    /* ── Column track → vertical stack on mobile ── */
     .spread-content {
-        padding: 0 var(--gutter);
-        gap: 2.5rem;
+        flex-direction: column;
+        overflow: visible;
+        height: auto;
+        padding: 0 var(--gutter) 2rem var(--gutter);
+        padding-top: 0;
+    }
+
+    .column-track {
+        flex-direction: column;
+        gap: 2rem;
+        position: static;
+        /* no carousel on mobile */
+        transform: none !important;
+        transition: none;
+        will-change: auto;
+    }
+
+    .column {
+        min-width: 0;
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        opacity: 1 !important;
+        transition: none;
+    }
+
+    .column:not(:focus-within) {
+        opacity: 1;
+    }
+
+    .column:focus-within {
+        transform: none;
+    }
+
+    .bookmark-list {
+        height: auto;
+        flex-wrap: nowrap;
     }
 
     .column-header {
@@ -795,39 +884,51 @@ body[data-theme^="terminal-"]::after {
     }
 
     .bookmark {
+        width: 100%;
+        height: auto;
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.04);
         border-radius: 20px;
         margin-bottom: 0.5rem;
         padding: 1.25rem;
         min-height: 72px;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);
+        transition: background 0.2s ease, transform 0.2s ease;
+        transform: none;
+    }
+
+    .bookmark:hover,
+    .bookmark:focus {
+        background: rgba(255, 255, 255, 0.06);
+        transform: none;
+        border-color: var(--accent);
+        box-shadow: none;
     }
 
     .bookmark:active {
-        background: rgba(255, 255, 255, 0.08);
         transform: scale(0.97);
+    }
+
+    .b-meta {
+        opacity: 1;
+        font-size: 0.65rem;
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: 0;
+        margin-left: 0.75rem;
     }
 
     .b-name {
         font-size: 1.05rem;
         font-weight: 500;
-        margin-bottom: 2px;
     }
 
-    .b-meta {
-        font-size: 0.65rem;
-        font-family: 'JetBrains Mono', monospace;
-        letter-spacing: 0;
-    }
-
-    /* Special Favorite Styling - Magazine Feel */
     .bookmark.is-favorite {
         background: var(--fg);
         color: var(--bg);
         border: none;
         padding: 2rem 1.5rem;
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
         margin: 1rem 0;
     }
 
@@ -839,15 +940,53 @@ body[data-theme^="terminal-"]::after {
     .bookmark.is-favorite .b-meta {
         color: var(--bg);
         opacity: 0.6;
+        margin-left: 0;
+        margin-top: 0.25rem;
     }
 
-    /* ═══ MOBILE DOCK ═══ */
+    /* ── Mobile Dock ── */
     #mobile-dock {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        position: fixed;
         bottom: 1.25rem;
+        left: 50%;
+        transform: translateX(-50%);
         width: 280px;
         height: 64px;
         border-radius: 100px;
         background: rgba(10, 10, 10, 0.8);
         border: 1px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 500;
+        padding: 0 1.5rem;
+    }
+
+    .dock-item {
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        color: var(--text-dim);
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.6rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: color 0.2s ease;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .dock-item.is-active,
+    .dock-item:active {
+        color: var(--accent);
     }
 }

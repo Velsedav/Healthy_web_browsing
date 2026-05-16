@@ -376,6 +376,11 @@
                   "name": "Frontend MASTER",
                   "url": "https://frontendmasters.com/blog/pure-css-halftone-effect-in-3-declarations/",
                   "mobile": false
+                },
+                {
+                  "name": "Maxime Heckel",
+                  "url" : "https://blog.maximeheckel.com/",
+                  "mobile" : false
                 }
               ]
             }

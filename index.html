@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Healthy Browsing — A premium, keyboard-centric editorial dashboard for curated bookmarks.">
+    <meta name="description"
+        content="Healthy Browsing — A premium, keyboard-centric editorial dashboard for curated bookmarks.">
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Healthy. — Editorial Dashboard</title>
+    <title>Healthy web browsing</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body data-theme="void">
 
     <!-- ═══ MASTHEAD ═══════════════════════════════════════════ -->
     <header id="masthead">
         <div class="hdr-center">
             <div id="global-search-container">
-                <input type="text" id="global-search" placeholder="Type to search…" autocomplete="off" spellcheck="false" aria-label="Search bookmarks">
+                <input type="text" id="global-search" placeholder="Type to search…" autocomplete="off"
+                    spellcheck="false" aria-label="Search bookmarks">
             </div>
             <div id="mobile-cat-nav" class="hide-on-desktop">
                 <!-- Dynamic categories go here -->
@@ -33,19 +37,17 @@
     </header>
 
     <!-- ═══ GALLERY ════════════════════════════════════════════ -->
-    <main id="gallery" role="list">
-       <!-- Dynamic spreads go here -->
-       <div class="loading-state" style="display: flex; align-items: center; justify-content: center; height: 100vh; width: 100vw; font-family: 'Outfit'; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;">
-           Curating Content...
-       </div>
+    <main id="gallery">
+        <!-- Dynamic spreads go here -->
+        <div class="loading-state" aria-live="polite">Curating Content…</div>
     </main>
 
     <div id="theme-toast" aria-live="polite">Theme Updated</div>
 
     <!-- ═══ KEYBOARD OVERLAY ═══════════════════════════════════ -->
     <footer id="keyboard-help" aria-hidden="true">
-        <div class="k-hint"><kbd>↑</kbd><kbd>↓</kbd> Nav</div>
-        <div class="k-hint"><kbd>←</kbd><kbd>→</kbd> Categorical Jump</div>
+        <div class="k-hint"><kbd>↑</kbd><kbd>↓</kbd> Category</div>
+        <div class="k-hint"><kbd>←</kbd><kbd>→</kbd> Subcategory</div>
         <div class="k-hint"><kbd>/</kbd> Search</div>
         <div class="k-hint"><kbd>T</kbd> Theme</div>
         <div class="k-hint"><kbd>Esc</kbd> Reset</div>
@@ -57,21 +59,38 @@
     </div>
 
     <!-- ═══ MOBILE DOCK ════════════════════════════════════════ -->
-    <nav id="mobile-dock">
+    <nav id="mobile-dock" aria-label="Mobile navigation">
         <button class="dock-item is-active" id="dock-home" aria-label="Home">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
             <span>Feed</span>
         </button>
         <button class="dock-item" id="dock-search" aria-label="Search">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
             <span>Search</span>
         </button>
         <button class="dock-item" id="dock-theme" aria-label="Cycle Theme">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            <span>Focus</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <span>Theme</span>
         </button>
     </nav>
 
     <script src="script.js"></script>
 </body>
+
 </html>
