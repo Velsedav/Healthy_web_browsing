@@ -719,6 +719,12 @@
               "mobile": true
             },
             {
+              "name": "WhoSampled",
+              "url": "https://www.whosampled.com/",
+              "favorite": false,
+              "mobile": true
+            },
+            {
               "name": "Muted.io",
               "url": "https://muted.io/",
               "mobile": true
